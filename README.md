@@ -3,8 +3,8 @@
   * help to collect face-only pics
   * Useful when Collect Pics to run Neural Network
 ## Example Pics
-**Input**
+**- Input -**
 <img src="https://i.imgur.com/x3DHijr.jpg" width="100%"></img>
 <img src="https://i.imgur.com/GqzhI7F.jpg" width="100%"></img>
-**Output**
+**- Output -**
 <img src="https://i.imgur.com/ifEH4LO.png" width="100%"></img>
