@@ -1,4 +1,4 @@
-# Cut-And-Save-Face
+# Cut-And-Save-Faces
 + **require Python Lib - Opencv 4.0.1, Pillow**
   * help to collect face-only pics
   * Useful when Collect Pics to run Neural Network
