@@ -1,24 +1,34 @@
 import cv2
 import os
 from PIL import Image
-print("_________         __       _____              .___   _________                   ")
-print("\_   ___ \ __ ___/  |_    /  _  \   ____    __| _/  /   _____/____ ___  __ ____  ")
-print("/    \  \/|  |  \   __\  /  /_\  \ /    \  / __ |   \_____  \\__  \\  \/ // __ \ ")
-print("\     \___|  |  /|  |   /    |    \   |  \/ /_/ |   /        \/ __ \\   /\  ___/ ")
-print(" \______  /____/ |__|   \____|__  /___|  /\____ |  /_______  (____  /\_/  \___  >")
-print("        \/                      \/     \/      \/          \/     \/          \/ ")
-print("By Tudy")
-print("https://github.com/opencv/opencv/blob/master/data/haarcascades/haarcascade_frontalface_default.xml")
-print("https://github.com/nagadomi/lbpcascade_animeface")
-print("====Input Folder Name====")
-pathofimg = input()
-print("==== 1 : Real Human Face ====\n==== 2 : Japan Anime Face ====\nDefault : Real Human Face")
-face = input()
+Exist_Folder = False
+while Exist_Folder == False:
+    print("_________         __       _____              .___   _________                   ")
+    print("\_   ___ \ __ ___/  |_    /  _  \   ____    __| _/  /   _____/____ ___  __ ____  ")
+    print("/    \  \/|  |  \   __\  /  /_\  \ /    \  / __ |   \_____  \\\__  \\\  \/ // __ \ ")
+    print("\     \___|  |  /|  |   /    |    \   |  \/ /_/ |   /        \/ __ \\\   /\  ___/ ")
+    print(" \______  /____/ |__|   \____|__  /___|  /\____ |  /_______  (____  /\_/  \___  >")
+    print("        \/                      \/     \/      \/          \/     \/          \/ ")
+    print("By Tudy")
+    print("https://github.com/opencv/opencv/blob/master/data/haarcascades/haarcascade_frontalface_default.xml")
+    print("https://github.com/nagadomi/lbpcascade_animeface")
+    print("====Input Folder Name====")
+    pathofimg = input("-> ")
+    if os.path.isdir(pathofimg) == False :
+        print("\n")
+        print("Error : Not exist Folder(Directory). Please select Folder(Directory) that your img files exist.")
+        print("\n")
+        Exist_Folder = False
+    if os.path.isdir(pathofimg) == True :
+        Exist_Folder = True
+
+print("==== 1 : Real Human Face ====\n==== 2 : Japanese Anime Face ====\nDefault : Real Human Face")
+face = input("-> ")
 if __name__ == '__main__' :
     #tracker_types = ['BOOSTING', 'MIL','KCF', 'TLD', 'MEDIANFLOW', 'GOTURN']
     print("Select tracker type : BOOSTING, MIL, KCF, TLD, MEDIANFLOW, GOTURN")
     print("DEFAULT : MIL")
-    tracker_type = input()
+    tracker_type = input("-> ")
     if tracker_type == 'BOOSTING':
             tracker = cv2.TrackerBoosting_create()
     elif tracker_type == 'MIL':
