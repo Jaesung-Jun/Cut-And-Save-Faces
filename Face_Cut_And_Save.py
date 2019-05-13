@@ -75,4 +75,6 @@ if __name__ == '__main__' :
                                                    int(y + h)))
                 cropped_example.save("./konomi/"+str(file_num[i])+"_"+str(n)+"_cropped.jpg")
                 n = n+1
-            print('w : %d ' % w + 'h : %d ' % h + "   Detected Face!, from" + file_num[i])
+            print('w : %d ' % w + 'h : %d ' % h + "   Detected Face from " + file_num[i])
+        else:
+            print(file_num[i] + " : Can't Detect Face :( ")
