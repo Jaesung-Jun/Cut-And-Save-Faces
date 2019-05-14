@@ -1,7 +1,7 @@
 # Cut-And-Save-Faces
 * help to collect face-only pics
 * Useful when Collect Pics to run Neural Network
-+ **Require Python Libs*
++ **Require Python Libs**
   * Python 3.7.2
   * PIL 6.0
   * Opencv 4.0.1
