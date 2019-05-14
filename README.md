@@ -1,7 +1,10 @@
 # Cut-And-Save-Faces
-+ **require Python Lib - Opencv 4.0.1, Pillow**
-  * help to collect face-only pics
-  * Useful when Collect Pics to run Neural Network
+* help to collect face-only pics
+* Useful when Collect Pics to run Neural Network
++ **Require Python Libs*
+  * Python 3.7.2
+  * PIL 6.0
+  * Opencv 4.0.1
 + **XML Files Reference**
   * https://github.com/opencv/opencv/blob/master/data/haarcascades/haarcascade_frontalface_default.xml
   * https://github.com/nagadomi/lbpcascade_animeface
