@@ -5,7 +5,7 @@
   * Python 3.7.2
   * PIL 6.0
   * Opencv 4.0.1
-+ **XML Files Reference**
++ **XML Files Referencies**
   * https://github.com/opencv/opencv/blob/master/data/haarcascades/haarcascade_frontalface_default.xml
   * https://github.com/nagadomi/lbpcascade_animeface
 ## Example Pics
