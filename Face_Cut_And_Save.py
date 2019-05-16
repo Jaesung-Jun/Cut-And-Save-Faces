@@ -1,6 +1,11 @@
 import cv2
 import os
 from PIL import Image
+
+if os.path.isdir("konomi") == False :
+    print("* Make Konomi Folder")
+    os.makedirs(os.path.join("konomi"))
+
 Exist_Folder = False
 while Exist_Folder == False:
     print("_________         __       _____              .___   _________                   ")
