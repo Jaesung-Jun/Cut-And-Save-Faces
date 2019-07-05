@@ -10,10 +10,12 @@
   * https://github.com/nagadomi/lbpcascade_animeface
 ## Example Pics
 **- Input -**
-<img src="https://i.imgur.com/x3DHijr.jpg" width="100%"></img>
-<img src="https://i.imgur.com/GqzhI7F.jpg" width="100%"></img>
+<img src="https://imgur.com/YPuWFWW" width="100%"></img>
+<img src="https://imgur.com/I3QQDTo" width="100%"></img>
+<img src="https://imgur.com/znRGeEl" width="100%"></img>
+
 **- Output -**
-<img src="https://i.imgur.com/ifEH4LO.png" width="100%"></img>
+<img src="https://imgur.com/QwKm7C7" width="100%"></img>
 
 ## Licence Of "haarcascade_frontalface_default.xml"
 
