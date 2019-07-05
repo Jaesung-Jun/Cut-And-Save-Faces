@@ -11,7 +11,9 @@
 ## Example Pics
 **- Input -**
 [Imgur](https://imgur.com/GBvdmcw)
+
 [Imgur](https://imgur.com/NjEAtpT)
+
 [Imgur](https://imgur.com/1jL4lpK)
 
 
