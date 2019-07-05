@@ -15,7 +15,7 @@
 <img src="https://imgur.com/znRGeEl" width="100%"></img>
 
 **- Output -**
-[Imgur](https://imgur.com/QwKm7C7)
+<blockquote class="imgur-embed-pub" lang="en" data-id="QwKm7C7"><a href="https://imgur.com/QwKm7C7">View post on imgur.com</a></blockquote><script async src="//s.imgur.com/min/embed.js" charset="utf-8"></script>
 
 ## Licence Of "haarcascade_frontalface_default.xml"
 
