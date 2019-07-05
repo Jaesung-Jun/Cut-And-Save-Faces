@@ -15,7 +15,7 @@
 <img src="https://imgur.com/znRGeEl" width="100%"></img>
 
 **- Output -**
-<img src="https://imgur.com/QwKm7C7" width="100%"></img>
+[Imgur](https://imgur.com/QwKm7C7)
 
 ## Licence Of "haarcascade_frontalface_default.xml"
 
