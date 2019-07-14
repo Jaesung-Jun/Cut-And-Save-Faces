@@ -1,9 +1,9 @@
 ## TODO
 
-* support video files
-* Face Alignment
-* Graphic InterFace
-* Labeling
+* [] support video files
+* [] Face Alignment
+* [] Graphic InterFace
+* [] Labeling
 
 # Cut-And-Save-Faces
 * help to collect face-only pics
