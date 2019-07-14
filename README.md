@@ -1,4 +1,4 @@
-* WARNING : This code has bug.
+* WARNING : This code has bug. :( I'm Fixing it Now
 ## TODO
 
 * [ ] support video files
