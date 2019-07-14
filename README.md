@@ -1,8 +1,7 @@
-* WARNING : This code has bug. :( I'm Fixing it Now
 ## TODO
 
 * [ ] support video files
-* [ ] Face Alignment
+* [x] Face Alignment
 * [ ] Graphic InterFace
 * [ ] Labeling
 
