@@ -1,6 +1,13 @@
 import cv2
 import os
+import dlib
+import numpy as np
+from imutils.face_utils import FaceAligner
+from imutils import face_utils
 from PIL import Image
+
+predictor = dlib.shape_predictor("shape_predictor_68_face_landmarks.dat")
+fa = FaceAligner(predictor, desiredFaceWidth=256)
 
 if os.path.isdir("konomi") == False :
     print("* Make Konomi Folder")
@@ -27,8 +34,16 @@ while Exist_Folder == False:
     if os.path.isdir(pathofimg) == True :
         Exist_Folder = True
 
-print("==== 1 : Real Human Face ====\n==== 2 : Japanese Anime Face ====\nDefault : Real Human Face")
+print("===========================\n1 : Real Human Face\n2 : Japanese Anime Face\n===========================\n[Default : Real Human Face]")
 face = input("-> ")
+print("Do you want to resize output Pics? (y, n) [Default : n]")
+yorn = input("-> ")
+if yorn == 'y':
+    print("Plz Enter the number of pixels you want to resize [Default : 100]")
+    resize_num = input("-> ")
+    if resize_num == '':
+        print("You selected Default(100)")
+        resize_num = 100
 if __name__ == '__main__' :
     #tracker_types = ['BOOSTING', 'MIL','KCF', 'TLD', 'MEDIANFLOW', 'GOTURN']
     print("Select tracker type : BOOSTING, MIL, KCF, TLD, MEDIANFLOW, GOTURN")
@@ -68,18 +83,21 @@ if __name__ == '__main__' :
         img = cv2.imread(pathofimg + "/" + file_num[i])
         grayframe = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
         grayframe = cv2.equalizeHist(grayframe)
-        faces  = face_cascade.detectMultiScale(grayframe, 1.1, 5, 0, (30, 30))
-        
+        faces = face_cascade.detectMultiScale(grayframe, 1.1, 5, 0, (30, 30))
         if len(faces) > 0:
-            x,y,w,h = faces[0]
+            (x,y,w,h) = faces[1]
             TrackingROI = (x,y,w,h)
             for(x, y, w, h) in faces:
-                cv2.rectangle(img,(x,y),(x+w,y+h),(0,255,0),3, 4, 0)
-                cropped_example = pillow_img.crop((int(x), int(y),
-                                                   int(x + w),
-                                                   int(y + h)))
-                cropped_example.save("./konomi/"+str(file_num[i])+"_"+str(n)+"_cropped.jpg")
-                n = n+1
-            print('w : %d ' % w + 'h : %d ' % h + "   Detected Face from " + file_num[i])
+                cropped_img = img[int(y):int(y + h), int(x):int(x + w)]
+                cropped_img_dlib = dlib.rectangle(left=int(x), top=int(y), right=int(x + w), bottom=int(y + h))
+                aligned_cropped_image_shape = predictor(cropped_img, cropped_img_dlib)
+                aligned_cropped_image = face_utils.shape_to_np(aligned_cropped_image_shape)
+                aligned_cropped_image = aligned_cropped_image.astype(np.uint8)
+                cv2.waitKey(0)
+                if yorn == 'y':
+                    aligned_cropped_image = cv2.resize(aligned_cropped_image, (int(resize_num), int(resize_num)))
+                cv2.imwrite("./konomi/" + str(file_num[i]) + "_" + str(n) + "_cropped.jpg", aligned_cropped_image)
+                n = n + 1
+            print("Detected Face from " + file_num[i])
         else:
             print(file_num[i] + " : Can't Detect Face :( ")
