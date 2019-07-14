@@ -29,7 +29,7 @@
 
 ![input_4](https://i.imgur.com/QwKm7C7.png)
 
-## Licence Of "haarcascade_frontalface_default.xml"
+## Licence of "haarcascade_frontalface_default.xml"
 
 
 **IMPORTANT: READ BEFORE DOWNLOADING, COPYING, INSTALLING OR USING.**
