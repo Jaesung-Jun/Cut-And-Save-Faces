@@ -3,6 +3,7 @@ import os
 import dlib
 import numpy as np
 from imutils.face_utils import FaceAligner
+from imutils.face_utils import rect_to_bb
 from imutils import face_utils
 from PIL import Image
 
@@ -76,8 +77,8 @@ if __name__ == '__main__' :
     TrackingState = 0
     TrackingROI = (0,0,0,0)
     i=0
-    n=0
     for i in range(len(file_num)):
+        n=0
         print(pathofimg + "/" + file_num[i])
         pillow_img = Image.open(pathofimg + "/" + file_num[i])
         img = cv2.imread(pathofimg + "/" + file_num[i])
@@ -89,14 +90,14 @@ if __name__ == '__main__' :
             TrackingROI = (x,y,w,h)
             for(x, y, w, h) in faces:
                 cropped_img = img[int(y):int(y + h), int(x):int(x + w)]
-                cropped_img_dlib = dlib.rectangle(left=int(x), top=int(y), right=int(x + w), bottom=int(y + h))
-                aligned_cropped_image_shape = predictor(cropped_img, cropped_img_dlib)
-                aligned_cropped_image = face_utils.shape_to_np(aligned_cropped_image_shape)
-                aligned_cropped_image = aligned_cropped_image.astype(np.uint8)
-                cv2.waitKey(0)
+                cropped_img_dlib = dlib.rectangle(left=int(x), top=int(y), right=int(x+w), bottom=int(y+h))
+                aligned_cropped_img = fa.align(img, grayframe, cropped_img_dlib)
+                #cv2.imshow("not aligned", cropped_img)
+                #cv2.imshow("aligned", aligned_cropped_img)
+                #cv2.waitKey(0)
                 if yorn == 'y':
-                    aligned_cropped_image = cv2.resize(aligned_cropped_image, (int(resize_num), int(resize_num)))
-                cv2.imwrite("./konomi/" + str(file_num[i]) + "_" + str(n) + "_cropped.jpg", aligned_cropped_image)
+                    aligned_cropped_img = cv2.resize(aligned_cropped_img, (int(resize_num), int(resize_num)))
+                cv2.imwrite("./konomi/" + str(file_num[i]) + "_" + str(n) + "_cropped.jpg", aligned_cropped_img)
                 n = n + 1
             print("Detected Face from " + file_num[i])
         else:
