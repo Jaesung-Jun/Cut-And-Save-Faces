@@ -19,15 +19,15 @@
 ## Example Pics
 **- Input -**
 
-<a href="#"><img src="https://imgur.com/GBvdmcw" width="400px"></a> 
+![input_1](https://imgur.com/GBvdmcw)
 
-<a href="#"><img src="https://imgur.com/NjEAtpT"></a> 
+![input_2](https://imgur.com/NjEAtpT)
 
-<a href="#"><img src="https://imgur.com/1jL4lpK" width="400px"></a> 
+![input_3](https://imgur.com/1jL4lpK)
 
 **- Output -**
 
-<a href="#"><img src="https://imgur.com/QwKm7C7" width="400px"></a> 
+![input_4](https://imgur.com/QwKm7C7)
 
 ## Licence Of "haarcascade_frontalface_default.xml"
 
