@@ -16,9 +16,10 @@
   * dlib==19.17.0
   * imutils==0.5.2
   * numpy==1.16.4
-+ **XML Files Reference**
++ **XML & dat Files Reference**
   * https://github.com/opencv/opencv/blob/master/data/haarcascades/haarcascade_frontalface_default.xml
   * https://github.com/nagadomi/lbpcascade_animeface
+  * https://github.com/AKSHAYUBHAT/TensorFace/blob/master/openface/models/dlib/shape_predictor_68_face_landmarks.dat
 ## Example Pics
 **- Input -**
 
