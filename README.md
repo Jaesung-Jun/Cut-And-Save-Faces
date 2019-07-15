@@ -11,11 +11,11 @@
 * Align face-only pics
 + **Require Python Libs**
   * Python 3.7.2
-  * PIL 6.0
-  * Opencv 4.0.1
-  * OpenCV-Contrib
-  * dlib
-  * imutils
+  * opencv-python==4.1.0.25
+  * opencv-contrib-python==4.1.0.25
+  * dlib==19.17.0
+  * imutils==0.5.2
+  * numpy==1.16.4
 + **XML Files Reference**
   * https://github.com/opencv/opencv/blob/master/data/haarcascades/haarcascade_frontalface_default.xml
   * https://github.com/nagadomi/lbpcascade_animeface
