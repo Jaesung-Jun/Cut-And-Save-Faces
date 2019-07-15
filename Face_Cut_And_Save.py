@@ -5,7 +5,6 @@ import numpy as np
 from imutils.face_utils import FaceAligner
 from imutils.face_utils import rect_to_bb
 from imutils import face_utils
-from PIL import Image
 
 predictor = dlib.shape_predictor("shape_predictor_68_face_landmarks.dat")
 fa = FaceAligner(predictor, desiredFaceWidth=256)
