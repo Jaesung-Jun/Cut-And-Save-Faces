@@ -79,7 +79,6 @@ if __name__ == '__main__' :
     for i in range(len(file_num)):
         n=0
         print(pathofimg + "/" + file_num[i])
-        pillow_img = Image.open(pathofimg + "/" + file_num[i])
         img = cv2.imread(pathofimg + "/" + file_num[i])
         grayframe = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
         grayframe = cv2.equalizeHist(grayframe)
