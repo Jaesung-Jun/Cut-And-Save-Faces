@@ -8,16 +8,18 @@
 # Cut-And-Save-Faces
 * help to collect face-only pics
 * Useful when Collect Pics to run Neural Network
+* Align face-only pics
 + **Require Python Libs**
   * Python 3.7.2
-  * PIL 6.0
-  * Opencv 4.0.1
-  * OpenCV-Contrib
-  * dlib
-  * imutils
-+ **XML Files Reference**
+  * opencv-python==4.1.0.25
+  * opencv-contrib-python==4.1.0.25
+  * dlib==19.17.0
+  * imutils==0.5.2
+  * numpy==1.16.4
++ **XML & dat Files Reference**
   * https://github.com/opencv/opencv/blob/master/data/haarcascades/haarcascade_frontalface_default.xml
   * https://github.com/nagadomi/lbpcascade_animeface
+  * https://github.com/AKSHAYUBHAT/TensorFace/blob/master/openface/models/dlib/shape_predictor_68_face_landmarks.dat
 ## Example Pics
 **- Input -**
 
@@ -27,9 +29,13 @@
 
 ![input_3](https://i.imgur.com/1jL4lpK.jpg)
 
+![input_4](https://github.com/Unkn03nUser/Cut-And-Save-Faces/blob/master/Sample_Pics/unnamed.jpg?raw=true)
+
+![input_5](https://github.com/Unkn03nUser/Cut-And-Save-Faces/blob/master/Sample_Pics/4150710_fVk.jpg?raw=true)
+
 **- Output -**
 
-![input_4](https://i.imgur.com/QwKm7C7.png)
+![input_4](https://i.imgur.com/VmADxaT.png)
 
 ## Licence of "haarcascade_frontalface_default.xml"
 
