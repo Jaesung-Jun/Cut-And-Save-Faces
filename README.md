@@ -13,6 +13,8 @@
   * PIL 6.0
   * Opencv 4.0.1
   * OpenCV-Contrib
+  * dlib
+  * imutils
 + **XML Files Reference**
   * https://github.com/opencv/opencv/blob/master/data/haarcascades/haarcascade_frontalface_default.xml
   * https://github.com/nagadomi/lbpcascade_animeface
