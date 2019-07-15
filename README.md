@@ -8,6 +8,7 @@
 # Cut-And-Save-Faces
 * help to collect face-only pics
 * Useful when Collect Pics to run Neural Network
+* Align face-only pics
 + **Require Python Libs**
   * Python 3.7.2
   * PIL 6.0
@@ -27,9 +28,13 @@
 
 ![input_3](https://i.imgur.com/1jL4lpK.jpg)
 
+![input_4](https://github.com/Unkn03nUser/Cut-And-Save-Faces/blob/master/Sample_Pics/unnamed.jpg?raw=true)
+
+![input_5](https://github.com/Unkn03nUser/Cut-And-Save-Faces/blob/master/Sample_Pics/4150710_fVk.jpg?raw=true)
+
 **- Output -**
 
-![input_4](https://i.imgur.com/QwKm7C7.png)
+![input_4](https://i.imgur.com/VmADxaT.png)
 
 ## Licence of "haarcascade_frontalface_default.xml"
 
