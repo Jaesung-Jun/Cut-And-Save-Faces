@@ -89,9 +89,9 @@ if __name__ == '__main__' :
             (x,y,w,h) = faces[1]
             TrackingROI = (x,y,w,h)
             for(x, y, w, h) in faces:
-                cropped_img = img[int(y):int(y + h), int(x):int(x + w)]
                 cropped_img_dlib = dlib.rectangle(left=int(x), top=int(y), right=int(x+w), bottom=int(y+h))
                 aligned_cropped_img = fa.align(img, grayframe, cropped_img_dlib)
+                #cropped_img = img[int(y):int(y + h), int(x):int(x + w)]
                 #cv2.imshow("not aligned", cropped_img)
                 #cv2.imshow("aligned", aligned_cropped_img)
                 #cv2.waitKey(0)
