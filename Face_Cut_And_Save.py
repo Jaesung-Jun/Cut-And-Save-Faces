@@ -5,7 +5,6 @@ import numpy as np
 from imutils.face_utils import FaceAligner
 from imutils.face_utils import rect_to_bb
 from imutils import face_utils
-from PIL import Image
 
 predictor = dlib.shape_predictor("shape_predictor_68_face_landmarks.dat")
 fa = FaceAligner(predictor, desiredFaceWidth=256)
@@ -80,7 +79,6 @@ if __name__ == '__main__' :
     for i in range(len(file_num)):
         n=0
         print(pathofimg + "/" + file_num[i])
-        pillow_img = Image.open(pathofimg + "/" + file_num[i])
         img = cv2.imread(pathofimg + "/" + file_num[i])
         grayframe = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
         grayframe = cv2.equalizeHist(grayframe)
