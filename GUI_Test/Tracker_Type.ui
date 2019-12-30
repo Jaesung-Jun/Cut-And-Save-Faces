@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Dialog</class>
+ <widget class="QDialog" name="Dialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>383</width>
+    <height>213</height>
+   </rect>
+  </property>
+  <property name="font">
+   <font>
+    <family>Arial</family>
+   </font>
+  </property>
+  <property name="windowTitle">
+   <string>Tracker Type Select</string>
+  </property>
+  <widget class="QGroupBox" name="groupBox">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>20</y>
+     <width>351</width>
+     <height>151</height>
+    </rect>
+   </property>
+   <property name="title">
+    <string>Select</string>
+   </property>
+   <widget class="QRadioButton" name="MIL">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>30</y>
+      <width>108</width>
+      <height>19</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>MIL</string>
+    </property>
+   </widget>
+   <widget class="QRadioButton" name="BOOSTING">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>70</y>
+      <width>108</width>
+      <height>19</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>BOOSTING</string>
+    </property>
+   </widget>
+   <widget class="QRadioButton" name="GOTURN">
+    <property name="geometry">
+     <rect>
+      <x>200</x>
+      <y>110</y>
+      <width>108</width>
+      <height>19</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>GOTURN</string>
+    </property>
+   </widget>
+   <widget class="QRadioButton" name="KCF">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>110</y>
+      <width>108</width>
+      <height>19</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>KCF</string>
+    </property>
+   </widget>
+   <widget class="QRadioButton" name="MEDIANFLOW">
+    <property name="geometry">
+     <rect>
+      <x>200</x>
+      <y>70</y>
+      <width>151</width>
+      <height>19</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>MEDIANFLOW</string>
+    </property>
+   </widget>
+   <widget class="QRadioButton" name="TLD">
+    <property name="geometry">
+     <rect>
+      <x>200</x>
+      <y>30</y>
+      <width>108</width>
+      <height>19</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>TLD</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QPushButton" name="pushButton">
+   <property name="geometry">
+    <rect>
+     <x>202</x>
+     <y>180</y>
+     <width>171</width>
+     <height>28</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>OK</string>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
