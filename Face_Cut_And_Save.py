@@ -87,7 +87,7 @@ if __name__ == '__main__' :
         grayframe = cv2.equalizeHist(grayframe)
         faces = face_cascade.detectMultiScale(grayframe, 1.1, 5, 0, (30, 30))
         if len(faces) > 0:
-            (x,y,w,h) = faces[1]
+            (x,y,w,h) = faces[0]
             TrackingROI = (x,y,w,h)
             for(x, y, w, h) in faces:
                 cropped_img_dlib = dlib.rectangle(left=int(x), top=int(y), right=int(x+w), bottom=int(y+h))
