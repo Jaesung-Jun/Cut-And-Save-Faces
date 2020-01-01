@@ -7,13 +7,16 @@
 * [ ] Labeling
 
 # Cut-And-Save-Faces
+
 * help to collect face-only pics
 * Useful when Collect Pics to run Neural Network
 * Align face-only pics
+
 + **XML & dat Files Reference**
   * https://github.com/opencv/opencv/blob/master/data/haarcascades/haarcascade_frontalface_default.xml
   * https://github.com/nagadomi/lbpcascade_animeface
   * https://github.com/AKSHAYUBHAT/TensorFace/blob/master/openface/models/dlib/shape_predictor_68_face_landmarks.dat
+  
 ## Example Pics
 **- Input -**
 
@@ -68,11 +71,3 @@
     and on any theory of liability, whether in contract, strict liability,
     or tort (including negligence or otherwise) arising in any way out of
     the use of this software, even if advised of the possibility of such damage.
-
- 
-
-# Cut-And-Save-Face
-* help to collect face-only pics
-<img src="https://i.imgur.com/x3DHijr.jpg" width="100%"></img>
-<img src="https://i.imgur.com/GqzhI7F.jpg" width="100%"></img>
-
