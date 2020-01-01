@@ -5,9 +5,10 @@ import numpy as np
 from imutils.face_utils import FaceAligner
 from imutils.face_utils import rect_to_bb
 from imutils import face_utils
+
 #PyQt5 - GUI
-from PyQt5.QtWidgets import *
-from PyQt5.QtCore import *
+#from PyQt5.QtWidgets import *
+#from PyQt5.QtCore import *
 
 predictor = dlib.shape_predictor("shape_predictor_68_face_landmarks.dat")
 fa = FaceAligner(predictor, desiredFaceWidth=256)
