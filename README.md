@@ -10,13 +10,6 @@
 * help to collect face-only pics
 * Useful when Collect Pics to run Neural Network
 * Align face-only pics
-+ **Require Python Libs**
-  * Python 3.7.2
-  * opencv-python==4.1.0.25
-  * opencv-contrib-python==4.1.0.25
-  * dlib==19.17.0
-  * imutils==0.5.2
-  * numpy==1.16.4
 + **XML & dat Files Reference**
   * https://github.com/opencv/opencv/blob/master/data/haarcascades/haarcascade_frontalface_default.xml
   * https://github.com/nagadomi/lbpcascade_animeface
@@ -82,5 +75,4 @@
 * help to collect face-only pics
 <img src="https://i.imgur.com/x3DHijr.jpg" width="100%"></img>
 <img src="https://i.imgur.com/GqzhI7F.jpg" width="100%"></img>
-require Python Lib - Opencv 4.0.1, Pillow
 
