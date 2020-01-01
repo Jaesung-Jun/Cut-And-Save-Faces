@@ -10,6 +10,7 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 import sys
 from PyQt5.QtWidgets import QWidget
+from PyQt5.QtWidgets import QMessageBox
 
 class Tracker_Type_Select_UI(QWidget):
 
@@ -58,7 +59,7 @@ class Tracker_Type_Select_UI(QWidget):
 
         #OK Button Close
         self.event_handler = Tracker_Form_Event_Handler()
-        self.pushButton.clicked.connect(self.event_handler.okButton)
+        self.pushButton.clicked.connect(lambda: self.event_handler.okButton(Dialog))
     
     def retranslateUi(self, Dialog):
         _translate = QtCore.QCoreApplication.translate
@@ -74,9 +75,8 @@ class Tracker_Type_Select_UI(QWidget):
 
 class Tracker_Form_Event_Handler():
 
-    def okButton(self):
-        self.tracker_type_select = Tracker_Type_Select_UI()
-        self.tracker_type_select.close()
+    def okButton(self, Dialog):
+        Dialog.accept()
 """
 if __name__ == "__main__":
 
