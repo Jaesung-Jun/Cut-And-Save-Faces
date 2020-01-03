@@ -15,6 +15,8 @@ from PyQt5.QtWidgets import QMessageBox
 class Tracker_Type_Select_UI(QWidget):
 
     def setupUi(self, Dialog):
+        #icon
+        self.setWindowIcon(QtGui.QIcon('lena.png'))
 
         Dialog.setObjectName("Dialog2")
         Dialog.resize(383, 213)

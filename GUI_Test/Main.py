@@ -17,6 +17,8 @@ import TrackerForm
 
 class Main_Form_Ui(QDialog):
     def setupUi(self, Dialog):
+        #icon
+        #self.setWindowIcon(QtGui.QIcon('lena.png'))
         Dialog.setObjectName("Dialog")
         Dialog.resize(823, 600)
 
@@ -147,6 +149,7 @@ class Main_Form_Event_Handle:
 if __name__ == "__main__":
     
     app = QtWidgets.QApplication(sys.argv)
+    app.setWindowIcon(QtGui.QIcon('lena.png'))
     dialog = QtWidgets.QDialog()
 
     main_form_ui = Main_Form_Ui()
