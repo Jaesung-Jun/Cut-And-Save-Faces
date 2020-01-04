@@ -14,7 +14,8 @@ from PyQt5.QtWidgets import QMessageBox
 
 class Tracker_Type_Select_UI(QWidget):
 
-    def setupUi(self, Dialog):
+    def setupUi(self, Dialog, tracker_type):
+
         #icon
         self.setWindowIcon(QtGui.QIcon('lena.png'))
 
@@ -23,6 +24,9 @@ class Tracker_Type_Select_UI(QWidget):
         font = QtGui.QFont()
         font.setFamily("Arial")
         Dialog.setFont(font)
+
+        #Event Handler Instance
+        self.event_handler = Tracker_Form_Event_Handler(Dialog, self)
 
         self.groupBox = QtWidgets.QGroupBox(Dialog)
         self.groupBox.setGeometry(QtCore.QRect(20, 20, 351, 151))
@@ -55,14 +59,27 @@ class Tracker_Type_Select_UI(QWidget):
         self.pushButton = QtWidgets.QPushButton(Dialog)
         self.pushButton.setGeometry(QtCore.QRect(202, 180, 171, 28))
         self.pushButton.setObjectName("pushButton")
+        self.pushButton.clicked.connect(self.event_handler.okButton)
 
         self.retranslateUi(Dialog)
         QtCore.QMetaObject.connectSlotsByName(Dialog)
+        
+        if tracker_type != "":
+            if tracker_type == "MIL":
+                self.MIL.setChecked(True)
+            elif tracker_type == "BOOSTING":
+                self.BOOSTING.setChecked(True)
+            elif tracker_type == "GOTURN":
+                self.GOTURN.setChecked(True) 
+            elif tracker_type == "KCF":
+                self.KCF.setChecked(True)
+            elif tracker_type == "MEDIANFLOW":
+                self.MEDIANFLOW.setChecked(True)
+            elif tracker_type == "TLD":
+                self.TLD.setChecked(True)
 
         #OK Button Close
-        self.event_handler = Tracker_Form_Event_Handler()
-        self.pushButton.clicked.connect(lambda: self.event_handler.okButton(Dialog))
-    
+        
     def retranslateUi(self, Dialog):
         _translate = QtCore.QCoreApplication.translate
         Dialog.setWindowTitle(_translate("Dialog", "Tracker Type Select"))
@@ -74,11 +91,40 @@ class Tracker_Type_Select_UI(QWidget):
         self.MEDIANFLOW.setText(_translate("Dialog", "MEDIANFLOW"))
         self.TLD.setText(_translate("Dialog", "TLD"))
         self.pushButton.setText(_translate("Dialog", "OK"))
+    
+    def getOutput(self):
+
+        self._output = self.event_handler.getOutput()
+        return self._output
 
 class Tracker_Form_Event_Handler():
 
-    def okButton(self, Dialog):
-        Dialog.accept()
+    def __init__(self, Dialog, widget):
+        self.Dialog = Dialog
+        self.widget = widget
+        self.tracker_type = ""
+
+    def okButton(self):
+
+        if self.widget.MIL.isChecked():
+            self.tracker_type = "MIL"
+        elif self.widget.BOOSTING.isChecked():
+            self.tracker_type = "BOOSTING"
+        elif self.widget.GOTURN.isChecked():
+            self.tracker_type = "GOTURN"
+        elif self.widget.KCF.isChecked():
+            self.tracker_type = "KCF"
+        elif self.widget.MEDIANFLOW.isChecked():
+            self.tracker_type = "MEDIANFLOW"
+        elif self.widget.TLD.isChecked():
+            self.tracker_type = "TLD"
+        else:
+            self.tracker_type = ""
+        self.Dialog.accept()
+
+    def getOutput(self):
+        return self.tracker_type
+        
 """
 if __name__ == "__main__":
 

@@ -138,27 +138,37 @@ class Main_Form_Ui(QDialog):
         self.tracker_type_button.setText(_translate("Dialog", "Tracker Type Select"))
 
 class Main_Form_Event_Handle:
+
+    def __init__(self, main_dialog):
+        self.tracker_type = ""
+        self.main_dialog = main_dialog
+        self.main_dialog.tracker_type_button.clicked.connect(self.trackerTypeButtonEvent)
     
     def trackerTypeButtonEvent(self):
+        tracker_form_dialog = QtWidgets.QDialog()
+        tracker_type_select = TrackerForm.Tracker_Type_Select_UI()
+        tracker_type_select.setupUi(tracker_form_dialog, self.tracker_type)
+        tracker_form_dialog.show()
+        tracker_form_dialog.exec_()
+        self.tracker_type = tracker_type_select.getOutput()
+        if self.tracker_type != "":
+            self.main_dialog.tracker_type_button.setText("Selected Tracker Type : {}".format(self.tracker_type))
+            
 
-        self.tracker_form_dialog = QtWidgets.QDialog()
-        self.tracker_type_select = TrackerForm.Tracker_Type_Select_UI()
-        self.tracker_type_select.setupUi(self.tracker_form_dialog)
-        self.tracker_form_dialog.show()
+    def trackerTypeReturn(self):
+        return self.tracker_type
 
 if __name__ == "__main__":
     
     app = QtWidgets.QApplication(sys.argv)
     app.setWindowIcon(QtGui.QIcon('lena.png'))
     dialog = QtWidgets.QDialog()
-
+    
     main_form_ui = Main_Form_Ui()
     main_form_ui.setupUi(dialog)
 
     # ===========Event Handle Codes=============== #
-    event_handle = Main_Form_Event_Handle()
-    #open Tracker Select Form
-    main_form_ui.tracker_type_button.clicked.connect(event_handle.trackerTypeButtonEvent)
-
+    event_handle = Main_Form_Event_Handle(main_form_ui)
+    
     dialog.show()
     sys.exit(app.exec_())
