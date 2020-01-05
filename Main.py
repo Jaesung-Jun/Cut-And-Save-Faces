@@ -13,12 +13,15 @@
 import sys
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import QDialog
+from PyQt5.QtCore import QDir 
+import os
 import TrackerForm
+import ctypes
+import ResizeForm
 
 class Main_Form_Ui(QDialog):
     def setupUi(self, Dialog):
-        #icon
-        #self.setWindowIcon(QtGui.QIcon('lena.png'))
+
         Dialog.setObjectName("Dialog")
         Dialog.resize(823, 600)
 
@@ -68,6 +71,7 @@ class Main_Form_Ui(QDialog):
         self.path_text.setGeometry(QtCore.QRect(70, 10, 591, 31))
         self.path_text.setObjectName("path_text")
         self.path_text.setText("please select path")
+        self.path_text.setEnabled(False)
 
         self.path_label = QtWidgets.QLabel(Dialog)
         self.path_label.setGeometry(QtCore.QRect(20, 10, 101, 31))
@@ -86,13 +90,21 @@ class Main_Form_Ui(QDialog):
         self.browse_button.setFont(font)
         self.browse_button.setObjectName("browse_button")
 
-        self.sample_photo_view = QtWidgets.QGraphicsView(Dialog)
+        self.sample_photo_view = QtWidgets.QLabel(Dialog)
         self.sample_photo_view.setGeometry(QtCore.QRect(20, 70, 381, 341))
         self.sample_photo_view.setObjectName("sample_photo_view")
+        self.sample_photo_view.setAlignment(QtCore.Qt.AlignCenter)
+
+        self.image_box = QtWidgets.QGroupBox(Dialog)
+        self.image_box.setGeometry(QtCore.QRect(20, 70, 382, 342))
 
         self.directory_tree_view = QtWidgets.QTreeView(Dialog)
         self.directory_tree_view.setGeometry(QtCore.QRect(430, 70, 381, 341))
         self.directory_tree_view.setObjectName("directory_tree_view")
+        self.directory_tree_view.setAnimated(False)
+        self.directory_tree_view.setIndentation(20)
+        self.directory_tree_view.setSortingEnabled(True)
+        self.directory_tree_view.setWindowTitle("directory view")
 
         self.image_view_label = QtWidgets.QLabel(Dialog)
         self.image_view_label.setGeometry(QtCore.QRect(20, 50, 81, 16))
@@ -141,8 +153,14 @@ class Main_Form_Event_Handle:
 
     def __init__(self, main_dialog):
         self.tracker_type = ""
+        self.path = ""
+        self.wh = ["",""]
         self.main_dialog = main_dialog
+        
         self.main_dialog.tracker_type_button.clicked.connect(self.trackerTypeButtonEvent)
+        self.main_dialog.browse_button.clicked.connect(self.browseFileDialog)
+        self.main_dialog.directory_tree_view.clicked.connect(self.directoryViewClick)
+        self.main_dialog.resize_checkBox.stateChanged.connect(self.resizeCheckbox)
     
     def trackerTypeButtonEvent(self):
         tracker_form_dialog = QtWidgets.QDialog()
@@ -153,15 +171,65 @@ class Main_Form_Event_Handle:
         self.tracker_type = tracker_type_select.getOutput()
         if self.tracker_type != "":
             self.main_dialog.tracker_type_button.setText("Selected Tracker Type : {}".format(self.tracker_type))
-            
+    
+    def browseFileDialog(self):
 
-    def trackerTypeReturn(self):
-        return self.tracker_type
+        self.path = str(QtWidgets.QFileDialog.getExistingDirectory(self.main_dialog, "Select Directory"))
+        #Path is Exist
+        if os.path.exists(self.path) == True:
+            """
+            for (path, dir, files) in os.walk("c:/"):
+                for filename in files:
+                    ext = os.path.splitext(filename)[-1]
+                    if ext == '.jpg' or ext == '.png':
+                        img_file_path = path + "/" + filename
+                        print(img_file_path)
+            """
+            self.main_dialog.path_text.setText(self.path)  
+            self.model = QtWidgets.QFileSystemModel()
+            self.model.setRootPath('')
+            self.main_dialog.directory_tree_view.setModel(self.model) 
+            self.main_dialog.directory_tree_view.setRootIndex(self.model.index(self.path))
+        #Path Not Selected
+        elif self.path == "":
+            pass
+
+        #Path is Not Exist
+        elif os.path.exists(self.path) == False:
+            self.errorMessageBox("Directory Load Error", "Please select other directory")
+    
+    def directoryViewClick(self, index):
+        path = self.main_dialog.sender().model().filePath(index)
+        fname, ext = os.path.splitext(path)
+        if ext == '.jpg' or ext == '.png':
+            image_profile = QtGui.QPixmap(path)
+            image_profile = image_profile.scaledToHeight(381)
+            image_profile = image_profile.scaledToWidth(341)
+            self.main_dialog.sample_photo_view.setPixmap(image_profile)
+        else:
+            self.main_dialog.sample_photo_view.setText("This File is Not Support")
+
+    def resizeCheckbox(self):
+        if self.main_dialog.resize_checkBox.isChecked() == True:
+            resize_form_dialog = QtWidgets.QDialog()
+            resize_output = ResizeForm.Resize_UI()
+            resize_output.setupUi(resize_form_dialog, self.wh)
+            resize_form_dialog.show()
+            resize_form_dialog.exec_()
+            self.wh = resize_output.getOutput()
+
+            
+    def errorMessageBox(self, title="", content="Error"):
+        QtWidgets.QMessageBox.about(self.main_dialog, title, content)
+
+
+#class CASF_Main_Function():
+
 
 if __name__ == "__main__":
     
     app = QtWidgets.QApplication(sys.argv)
-    app.setWindowIcon(QtGui.QIcon('lena.png'))
+
     dialog = QtWidgets.QDialog()
     
     main_form_ui = Main_Form_Ui()
@@ -169,6 +237,12 @@ if __name__ == "__main__":
 
     # ===========Event Handle Codes=============== #
     event_handle = Main_Form_Event_Handle(main_form_ui)
-    
+
+    # ============Icon Setting============#
+    now_dir = os.path.dirname(os.path.realpath(__file__))
+    dialog.setWindowIcon(QtGui.QIcon(now_dir + '/lena.ico'))
+    myappid = 'Jaesung_Jun.github.CASF.1.5-GUI' # arbitrary string
+    ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID(myappid)
+
     dialog.show()
     sys.exit(app.exec_())

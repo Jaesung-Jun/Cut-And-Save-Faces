@@ -11,22 +11,20 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 import sys
 from PyQt5.QtWidgets import QWidget
 from PyQt5.QtWidgets import QMessageBox
+import os
 
 class Tracker_Type_Select_UI(QWidget):
 
     def setupUi(self, Dialog, tracker_type):
-
-        #icon
-        self.setWindowIcon(QtGui.QIcon('lena.png'))
+                
+        now_dir = os.path.dirname(os.path.realpath(__file__))
+        self.setWindowIcon(QtGui.QIcon(now_dir + '/lena.ico'))
 
         Dialog.setObjectName("Dialog2")
         Dialog.resize(383, 213)
         font = QtGui.QFont()
         font.setFamily("Arial")
         Dialog.setFont(font)
-
-        #Event Handler Instance
-        self.event_handler = Tracker_Form_Event_Handler(Dialog, self)
 
         self.groupBox = QtWidgets.QGroupBox(Dialog)
         self.groupBox.setGeometry(QtCore.QRect(20, 20, 351, 151))
@@ -59,26 +57,13 @@ class Tracker_Type_Select_UI(QWidget):
         self.pushButton = QtWidgets.QPushButton(Dialog)
         self.pushButton.setGeometry(QtCore.QRect(202, 180, 171, 28))
         self.pushButton.setObjectName("pushButton")
-        self.pushButton.clicked.connect(self.event_handler.okButton)
-
+        
         self.retranslateUi(Dialog)
         QtCore.QMetaObject.connectSlotsByName(Dialog)
-        
-        if tracker_type != "":
-            if tracker_type == "MIL":
-                self.MIL.setChecked(True)
-            elif tracker_type == "BOOSTING":
-                self.BOOSTING.setChecked(True)
-            elif tracker_type == "GOTURN":
-                self.GOTURN.setChecked(True) 
-            elif tracker_type == "KCF":
-                self.KCF.setChecked(True)
-            elif tracker_type == "MEDIANFLOW":
-                self.MEDIANFLOW.setChecked(True)
-            elif tracker_type == "TLD":
-                self.TLD.setChecked(True)
 
-        #OK Button Close
+        #Event Handler Instance
+        self.event_handler = Tracker_Form_Event_Handler(Dialog, self, tracker_type)
+
         
     def retranslateUi(self, Dialog):
         _translate = QtCore.QCoreApplication.translate
@@ -99,10 +84,27 @@ class Tracker_Type_Select_UI(QWidget):
 
 class Tracker_Form_Event_Handler():
 
-    def __init__(self, Dialog, widget):
-        self.Dialog = Dialog
+    def __init__(self, dialog, widget, tracker_type):
+
+        if tracker_type != "":
+            if tracker_type == "MIL":
+                widget.MIL.setChecked(True)
+            elif tracker_type == "BOOSTING":
+                widget.BOOSTING.setChecked(True)
+            elif tracker_type == "GOTURN":
+                widget.GOTURN.setChecked(True) 
+            elif tracker_type == "KCF":
+                widget.KCF.setChecked(True)
+            elif tracker_type == "MEDIANFLOW":
+                widget.MEDIANFLOW.setChecked(True)
+            elif tracker_type == "TLD":
+                widget.TLD.setChecked(True)
+
+        self.dialog = dialog
         self.widget = widget
         self.tracker_type = ""
+
+        widget.pushButton.clicked.connect(self.okButton)
 
     def okButton(self):
 
@@ -120,11 +122,12 @@ class Tracker_Form_Event_Handler():
             self.tracker_type = "TLD"
         else:
             self.tracker_type = ""
-        self.Dialog.accept()
+        self.dialog.accept()
 
     def getOutput(self):
         return self.tracker_type
-        
+
+
 """
 if __name__ == "__main__":
 
