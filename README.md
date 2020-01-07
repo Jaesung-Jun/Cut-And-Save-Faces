@@ -1,19 +1,9 @@
-
-### TODO
-
-* [ ] support video files
-* [x] Face Alignment
-* [ ] Graphic InterFace
-* [ ] Labeling
-
 <h1 align="center">
   <img src="icons/lena.png"><br/>Cut and Save Faces
 </h1>
 
 <h4 align="center">
-▶      Help to collect face-only pics      ◀
-<br>
-▶      Automately Align faces      ◀
+▶      Help to collect face picture      ◀
 </h4>
 
 <div align="center">
@@ -28,13 +18,28 @@
 </div>
 
 ### Description
+Cut And Save Faces is face pictures collecting tool.
 Written by Python. (uses Qt to develop its graphical interface)
-<img src="https://raw.githubusercontent.com/Jaesung-Jun/Cut-And-Save-Faces/master/Sample_Pics/red_velvet.jpg" width=200>
+<div align="center">
+<img src="https://raw.githubusercontent.com/Jaesung-Jun/Cut-And-Save-Faces/master/Sample_Pics/red_velvet.jpg" width=200 />
+<br>
+<img src="https://raw.githubusercontent.com/Jaesung-Jun/Cut-And-Save-Faces/master/sample/sample_outputs/red_velvet.jpg_0_cropped.jpg" width=80/>
+<img src="https://raw.githubusercontent.com/Jaesung-Jun/Cut-And-Save-Faces/master/sample/sample_outputs/red_velvet.jpg_1_cropped.jpg" width=80/>
+<img src="https://raw.githubusercontent.com/Jaesung-Jun/Cut-And-Save-Faces/master/sample/sample_outputs/red_velvet.jpg_2_cropped.jpg" width=80/>
+<img src="https://raw.githubusercontent.com/Jaesung-Jun/Cut-And-Save-Faces/master/sample/sample_outputs/red_velvet.jpg_3_cropped.jpg" width=80/>
+<img src="https://raw.githubusercontent.com/Jaesung-Jun/Cut-And-Save-Faces/master/sample/sample_outputs/red_velvet.jpg_4_cropped.jpg" width=80/>
+</div>
 
 ### Features
-
+* [ ] support video files
+* [x] Face Alignment
+* [ ] Graphic InterFace
+* [ ] Labeling
 ### Requirements
-
+* Ubuntu , macOS, Windows
+* PyQt5
+* Python 3 
+Please note <a href="https://github.com/Jaesung-Jun/Cut-And-Save-Faces/blob/master/requirements.txt">requirements.txt</a>
 ### Installation
 
 + **XML & dat Files Reference**
