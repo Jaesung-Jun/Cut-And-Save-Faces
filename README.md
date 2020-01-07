@@ -19,7 +19,7 @@ Help to collect face pictures
   <a><img src="https://img.shields.io/badge/licence-MIT-lightgrey"></a>
 </div>
 
-### Description
+## Description
 Cut And Save Faces is face pictures collecting tool.
 Written by Python. (uses Qt to develop its graphical interface)
 <div align="center">
@@ -34,20 +34,20 @@ Written by Python. (uses Qt to develop its graphical interface)
 <img src="https://raw.githubusercontent.com/Jaesung-Jun/Cut-And-Save-Faces/master/sample/sample_outputs/red_velvet.jpg_4_cropped.jpg" width=80/>
 </div>
 
-### Features
+## Features
 * [ ] support video files
 * [x] Face Alignment
 * [ ] Graphic InterFace
 * [ ] Labeling
-### Requirements
+## Requirements
 * Ubuntu , macOS, Windows
 * PyQt5
 * Python 3 
   
 Please note <a href="https://github.com/Jaesung-Jun/Cut-And-Save-Faces/blob/master/requirements.txt">requirements.txt</a>
-### Installation
+## Installation
 
-### References
+## References
 + **XML & dat Files Reference**
   * https://github.com/opencv/opencv/blob/master/data/haarcascades/haarcascade_frontalface_default.xml
   * https://github.com/nagadomi/lbpcascade_animeface
