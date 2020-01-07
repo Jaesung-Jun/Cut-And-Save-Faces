@@ -105,6 +105,15 @@ class Tracker_Form_Event_Handler():
         self.tracker_type = ""
 
         widget.pushButton.clicked.connect(self.okButton)
+        self.setIcon()
+    
+    def setIcon(self):
+        now_dir = os.path.dirname(os.path.realpath(__file__))
+        # ============Form Icon Setting============ #
+        self.dialog.setWindowIcon(QtGui.QIcon(now_dir + '/icon/lena.ico'))
+        # ============Button Icon Setting============ #
+        self.widget.pushButton.setIcon(QtGui.QIcon(now_dir + '/icon/select.ico'))
+        self.widget.pushButton.setIconSize(QtCore.QSize(17, 17))
 
     def okButton(self):
 

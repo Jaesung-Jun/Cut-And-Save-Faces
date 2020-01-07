@@ -170,6 +170,7 @@ class Main_Form_Ui(QDialog):
 class Main_Form_Event_Handle:
 
     def __init__(self, main_dialog):
+
         self.tracker_type = ""
         self.path = ""
         self.wh = ["",""]
@@ -179,7 +180,30 @@ class Main_Form_Event_Handle:
         self.main_dialog.browse_button.clicked.connect(self.browseFileDialog)
         self.main_dialog.directory_tree_view.clicked.connect(self.directoryViewClick)
         self.main_dialog.resize_checkBox.stateChanged.connect(self.resizeCheckbox)
-    
+        
+        #icon
+        self.setIcons()
+    def setIcons(self):
+        now_dir = os.path.dirname(os.path.realpath(__file__))
+
+        # ============Form Icon Setting============ #
+        
+        dialog.setWindowIcon(QtGui.QIcon(now_dir + '/icon/lena.ico'))
+        #print(now_dir + '/icon/lena.ico')
+        myappid = 'Jaesung_Jun.github.CASF.1.5-GUI' # arbitrary string
+        ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID(myappid)
+
+        # ============Button Icon Setting============ #
+        self.main_dialog.tracker_type_button.setIcon(QtGui.QIcon(now_dir + '/icon/select.ico'))
+        self.main_dialog.tracker_type_button.setIconSize(QtCore.QSize(24, 24))
+
+        self.main_dialog.browse_button.setIcon(QtGui.QIcon(now_dir + '/icon/browse.ico'))
+        self.main_dialog.browse_button.setIconSize(QtCore.QSize(24, 24))
+
+        self.main_dialog.run_button.setIcon(QtGui.QIcon(now_dir + '/icon/run.ico'))
+        self.main_dialog.run_button.setIconSize(QtCore.QSize(24, 24))
+
+
     def trackerTypeButtonEvent(self):
         tracker_form_dialog = QtWidgets.QDialog()
         tracker_type_select = TrackerForm.Tracker_Type_Select_UI()
@@ -255,12 +279,6 @@ if __name__ == "__main__":
 
     # ===========Event Handle Codes=============== #
     event_handle = Main_Form_Event_Handle(main_form_ui)
-
-    # ============Icon Setting============#
-    now_dir = os.path.dirname(os.path.realpath(__file__))
-    dialog.setWindowIcon(QtGui.QIcon(now_dir + '/lena.ico'))
-    myappid = 'Jaesung_Jun.github.CASF.1.5-GUI' # arbitrary string
-    ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID(myappid)
 
     dialog.show()
     sys.exit(app.exec_())

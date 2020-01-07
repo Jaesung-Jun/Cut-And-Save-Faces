@@ -87,6 +87,18 @@ class Resize_Form_Event_Handler():
         self.widget.width.textChanged.connect(lambda: self.onlyNumberInTextEdit(self.widget.width.toPlainText()))
         self.widget.height.textChanged.connect(lambda: self.onlyNumberInTextEdit(self.widget.height.toPlainText()))
 
+        #set icon
+        self.setIcons()
+
+    def setIcons(self):
+        now_dir = os.path.dirname(os.path.realpath(__file__))
+
+        # ============Form Icon Setting============ #
+        self.dialog.setWindowIcon(QtGui.QIcon(now_dir + '/icon/lena.ico'))
+        # ============Button Icon Setting============ #
+        self.widget.pushButton.setIcon(QtGui.QIcon(now_dir + '/icon/select.ico'))
+        self.widget.pushButton.setIconSize(QtCore.QSize(17, 17))
+
     def okButton(self):
         regex = re.compile("^[0-9]+$")
         if self.widget.width.toPlainText() == "" or self.widget.height.toPlainText() == "":
