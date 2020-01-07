@@ -1,2 +1,2 @@
-python -m PyQt5.uic.pyuic -x .\Resize_Output.ui -o Resize.py
+python -m PyQt5.uic.pyuic -x .\GUI.ui -o gui.py
 pause

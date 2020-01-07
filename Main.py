@@ -58,6 +58,21 @@ class Main_Form_Ui(QDialog):
         self.face_align_checkBox.setFont(font)
         self.face_align_checkBox.setObjectName("face_align_checkbox")
 
+        self.line = QtWidgets.QFrame(self.groupBox)
+        self.line.setGeometry(QtCore.QRect(0, 100, 331, 16))
+        self.line.setFrameShape(QtWidgets.QFrame.HLine)
+        self.line.setFrameShadow(QtWidgets.QFrame.Sunken)
+        self.line.setObjectName("line")
+
+        self.realFaceRadioButton = QtWidgets.QRadioButton(self.groupBox)
+        self.realFaceRadioButton.setGeometry(QtCore.QRect(10, 120, 161, 16))
+        self.realFaceRadioButton.setObjectName("realFaceRadioButton")
+        self.realFaceRadioButton.setChecked(True)
+
+        self.animeFaceRadioButton = QtWidgets.QRadioButton(self.groupBox)
+        self.animeFaceRadioButton.setGeometry(QtCore.QRect(190, 120, 141, 16))
+        self.animeFaceRadioButton.setObjectName("animeFaceRadioButton")
+
         self.resize_checkBox = QtWidgets.QCheckBox(self.groupBox)
         self.resize_checkBox.setGeometry(QtCore.QRect(10, 60, 181, 41))
         font = QtGui.QFont()
@@ -135,6 +150,7 @@ class Main_Form_Ui(QDialog):
         self.retranslateUi(Dialog)
         QtCore.QMetaObject.connectSlotsByName(Dialog)
 
+
     def retranslateUi(self, Dialog):
         _translate = QtCore.QCoreApplication.translate
         Dialog.setWindowTitle(_translate("Dialog", "CASF"))
@@ -148,6 +164,8 @@ class Main_Form_Ui(QDialog):
         self.directory_view_label.setText(_translate("Dialog", "Directory View"))
         self.made_by_label.setText(_translate("Dialog", "Made by Jae-sung Jun"))
         self.tracker_type_button.setText(_translate("Dialog", "Tracker Type Select"))
+        self.realFaceRadioButton.setText(_translate("Dialog", "Real Human Face Detect"))
+        self.animeFaceRadioButton.setText(_translate("Dialog", "Anime Face Detect"))
 
 class Main_Form_Event_Handle:
 
@@ -188,7 +206,7 @@ class Main_Form_Event_Handle:
             self.main_dialog.path_text.setText(self.path)  
             self.model = QtWidgets.QFileSystemModel()
             self.model.setRootPath('')
-            self.main_dialog.directory_tree_view.setModel(self.model) 
+            self.main_dialog.directory_tree_view.setModel(self.model)
             self.main_dialog.directory_tree_view.setRootIndex(self.model.index(self.path))
         #Path Not Selected
         elif self.path == "":

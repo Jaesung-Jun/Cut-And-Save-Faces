@@ -89,7 +89,9 @@ class Resize_Form_Event_Handler():
 
     def okButton(self):
         regex = re.compile("^[0-9]+$")
-        if regex.match(self.widget.width.toPlainText()) == None or regex.match(self.widget.height.toPlainText()) == None:
+        if self.widget.width.toPlainText() == "" or self.widget.height.toPlainText() == "":
+            QMessageBox.about(self.widget, "Error", "You should enter any number")
+        elif regex.match(self.widget.width.toPlainText()) == None or regex.match(self.widget.height.toPlainText()) == None:
             QMessageBox.about(self.widget, "Error", "You can enter only number")
             self.widget.width.setText("")
             self.widget.height.setText("")
