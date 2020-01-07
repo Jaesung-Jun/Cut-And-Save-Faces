@@ -16,9 +16,6 @@ import os
 class Tracker_Type_Select_UI(QWidget):
 
     def setupUi(self, Dialog, tracker_type):
-                
-        now_dir = os.path.dirname(os.path.realpath(__file__))
-        self.setWindowIcon(QtGui.QIcon(now_dir + '/lena.ico'))
 
         Dialog.setObjectName("Dialog2")
         Dialog.resize(383, 213)
@@ -108,11 +105,11 @@ class Tracker_Form_Event_Handler():
         self.setIcon()
     
     def setIcon(self):
-        now_dir = os.path.dirname(os.path.realpath(__file__))
+        icons_dir = os.path.dirname(os.path.realpath(__file__)) + "/icons/"
         # ============Form Icon Setting============ #
-        self.dialog.setWindowIcon(QtGui.QIcon(now_dir + '/icon/lena.ico'))
+        self.dialog.setWindowIcon(QtGui.QIcon(icons_dir + 'lena.ico'))
         # ============Button Icon Setting============ #
-        self.widget.pushButton.setIcon(QtGui.QIcon(now_dir + '/icon/select.ico'))
+        self.widget.pushButton.setIcon(QtGui.QIcon(icons_dir + 'select.ico'))
         self.widget.pushButton.setIconSize(QtCore.QSize(17, 17))
 
     def okButton(self):

@@ -15,10 +15,7 @@ import os
 
 class Resize_UI(QWidget):
 
-    def setupUi(self, Resize, wh):
-
-        now_dir = os.path.dirname(os.path.realpath(__file__))
-        self.setWindowIcon(QtGui.QIcon(now_dir + '/lena.ico'))        
+    def setupUi(self, Resize, wh):    
 
         Resize.setObjectName("Resize")
         Resize.resize(290, 122)
@@ -91,12 +88,11 @@ class Resize_Form_Event_Handler():
         self.setIcons()
 
     def setIcons(self):
-        now_dir = os.path.dirname(os.path.realpath(__file__))
-
+        icons_dir = os.path.dirname(os.path.realpath(__file__)) + "/icons/"
         # ============Form Icon Setting============ #
-        self.dialog.setWindowIcon(QtGui.QIcon(now_dir + '/icon/lena.ico'))
+        self.dialog.setWindowIcon(QtGui.QIcon(icons_dir + 'lena.ico'))
         # ============Button Icon Setting============ #
-        self.widget.pushButton.setIcon(QtGui.QIcon(now_dir + '/icon/select.ico'))
+        self.widget.pushButton.setIcon(QtGui.QIcon(icons_dir + 'select.ico'))
         self.widget.pushButton.setIconSize(QtCore.QSize(17, 17))
 
     def okButton(self):

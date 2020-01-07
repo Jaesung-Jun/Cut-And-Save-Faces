@@ -184,23 +184,23 @@ class Main_Form_Event_Handle:
         #icon
         self.setIcons()
     def setIcons(self):
-        now_dir = os.path.dirname(os.path.realpath(__file__))
+        icons_dir = os.path.dirname(os.path.realpath(__file__)) + "/icons/"
 
         # ============Form Icon Setting============ #
         
-        dialog.setWindowIcon(QtGui.QIcon(now_dir + '/icon/lena.ico'))
+        dialog.setWindowIcon(QtGui.QIcon(icons_dir + 'lena.ico'))
         #print(now_dir + '/icon/lena.ico')
         myappid = 'Jaesung_Jun.github.CASF.1.5-GUI' # arbitrary string
         ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID(myappid)
 
         # ============Button Icon Setting============ #
-        self.main_dialog.tracker_type_button.setIcon(QtGui.QIcon(now_dir + '/icon/select.ico'))
+        self.main_dialog.tracker_type_button.setIcon(QtGui.QIcon(icons_dir + 'select.ico'))
         self.main_dialog.tracker_type_button.setIconSize(QtCore.QSize(24, 24))
 
-        self.main_dialog.browse_button.setIcon(QtGui.QIcon(now_dir + '/icon/browse.ico'))
+        self.main_dialog.browse_button.setIcon(QtGui.QIcon(icons_dir + 'browse.ico'))
         self.main_dialog.browse_button.setIconSize(QtCore.QSize(24, 24))
 
-        self.main_dialog.run_button.setIcon(QtGui.QIcon(now_dir + '/icon/run.ico'))
+        self.main_dialog.run_button.setIcon(QtGui.QIcon(icons_dir + 'run.ico'))
         self.main_dialog.run_button.setIconSize(QtCore.QSize(24, 24))
 
 
