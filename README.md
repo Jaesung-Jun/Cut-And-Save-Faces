@@ -29,10 +29,11 @@
 
 ### Description
 Written by Python. (uses Qt to develop its graphical interface)
+<img src="https://raw.githubusercontent.com/Jaesung-Jun/Cut-And-Save-Faces/master/Sample_Pics/red_velvet.jpg" width=200>
 
 ### Features
 
-### Requirments
+### Requirements
 
 ### Installation
 

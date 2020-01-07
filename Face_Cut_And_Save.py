@@ -13,9 +13,9 @@ from imutils import face_utils
 predictor = dlib.shape_predictor("shape_predictor_68_face_landmarks.dat")
 fa = FaceAligner(predictor, desiredFaceWidth=256)
 
-if os.path.isdir("konomi") == False :
-    print("* Make Konomi Folder")
-    os.makedirs(os.path.join("konomi"))
+if os.path.isdir("outputs") == False :
+    print("* Make outputs Folder")
+    os.makedirs(os.path.join("outputs"))
 
 Exist_Folder = False
 while Exist_Folder == False:
@@ -99,7 +99,7 @@ if __name__ == '__main__' :
                 #cv2.waitKey(0)
                 if yorn == 'y':
                     aligned_cropped_img = cv2.resize(aligned_cropped_img, (int(resize_num), int(resize_num)))
-                cv2.imwrite("./konomi/" + str(file_num[i]) + "_" + str(n) + "_cropped.jpg", aligned_cropped_img)
+                cv2.imwrite("./outputs/" + str(file_num[i]) + "_" + str(n) + "_cropped.jpg", aligned_cropped_img)
                 n = n + 1
             print("Detected Face from " + file_num[i])
         else:
