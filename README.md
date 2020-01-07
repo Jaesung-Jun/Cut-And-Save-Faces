@@ -24,7 +24,7 @@ Cut And Save Faces is face pictures collecting tool.
 Written by Python. (uses Qt to develop its graphical interface)
 <div align="center">
 <h5> Input </h5>
-<img src="https://raw.githubusercontent.com/Jaesung-Jun/Cut-And-Save-Faces/master/Sample_Pics/red_velvet.jpg" width=200 />
+<img src="https://raw.githubusercontent.com/Jaesung-Jun/Cut-And-Save-Faces/master/sample/red_velvet.jpg" width=200 />
 <br>
 <h5> Output </h5>
 <img src="https://raw.githubusercontent.com/Jaesung-Jun/Cut-And-Save-Faces/master/sample/sample_outputs/red_velvet.jpg_0_cropped.jpg" width=80/>
