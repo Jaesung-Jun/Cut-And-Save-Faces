@@ -1,5 +1,5 @@
 <h1 align="center">
-  <img src="icons/lena.png"><br/>Cut and Save Faces
+  <img src="icons/lena.png"><br/>Cut And Save Faces
 </h1>
 
 <h4 align="center">
