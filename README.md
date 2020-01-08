@@ -3,7 +3,7 @@
 </h1>
 
 <h4 align="center">
-Help to collect face pictures
+Face pic collecting tool
 </h4>
 
 <div align="center">
@@ -20,7 +20,7 @@ Help to collect face pictures
 </div>
 
 ## Description
-Cut And Save Faces is face pictures collecting tool.
+Cut And Save Faces is face pictures collecting tool.<br>
 Written by Python. (uses Qt to develop its graphical interface)
 <div align="center">
 <h5> Input </h5>

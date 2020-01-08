@@ -10,7 +10,7 @@ from imutils import face_utils
 #from PyQt5.QtWidgets import *
 #from PyQt5.QtCore import *
 
-predictor = dlib.shape_predictor("shape_predictor_68_face_landmarks.dat")
+predictor = dlib.shape_predictor("./detection-files/shape_predictor_68_face_landmarks.dat")
 fa = FaceAligner(predictor, desiredFaceWidth=256)
 
 if os.path.isdir("outputs") == False :
@@ -72,11 +72,11 @@ if __name__ == '__main__' :
     face_cascade = cv2.CascadeClassifier()
 
     if face == '1':
-        face_cascade.load('.\haarcascade_frontalface_default.xml')
+        face_cascade.load('.\detection-files\haarcascade_frontalface_default.xml')
     if face == '2':
-        face_cascade.load('.\lbpcascade_animeface.xml')
+        face_cascade.load('.\detection-files\lbpcascade_animeface.xml')
     else:
-        face_cascade.load('.\haarcascade_frontalface_default.xml')
+        face_cascade.load('.\detection-files\haarcascade_frontalface_default.xml')
     TrackingState = 0
     TrackingROI = (0,0,0,0)
     i=0
