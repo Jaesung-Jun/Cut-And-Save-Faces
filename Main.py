@@ -64,14 +64,13 @@ class Main_Form_Ui(QDialog):
         self.line.setFrameShadow(QtWidgets.QFrame.Sunken)
         self.line.setObjectName("line")
 
-        self.realFaceRadioButton = QtWidgets.QRadioButton(self.groupBox)
-        self.realFaceRadioButton.setGeometry(QtCore.QRect(10, 120, 161, 16))
-        self.realFaceRadioButton.setObjectName("realFaceRadioButton")
-        self.realFaceRadioButton.setChecked(True)
+        self.real_face_radio_button = QtWidgets.QRadioButton(self.groupBox)
+        self.real_face_radio_button.setGeometry(QtCore.QRect(10, 120, 161, 16))
+        self.real_face_radio_button.setObjectName("real_face_radio_button")
 
-        self.animeFaceRadioButton = QtWidgets.QRadioButton(self.groupBox)
-        self.animeFaceRadioButton.setGeometry(QtCore.QRect(190, 120, 141, 16))
-        self.animeFaceRadioButton.setObjectName("animeFaceRadioButton")
+        self.anime_face_radio_button = QtWidgets.QRadioButton(self.groupBox)
+        self.anime_face_radio_button.setGeometry(QtCore.QRect(190, 120, 141, 16))
+        self.anime_face_radio_button.setObjectName("anime_face_radio_button")
 
         self.resize_checkBox = QtWidgets.QCheckBox(self.groupBox)
         self.resize_checkBox.setGeometry(QtCore.QRect(10, 60, 181, 41))
@@ -164,8 +163,8 @@ class Main_Form_Ui(QDialog):
         self.directory_view_label.setText(_translate("Dialog", "Directory View"))
         self.made_by_label.setText(_translate("Dialog", "Made by Jae-sung Jun"))
         self.tracker_type_button.setText(_translate("Dialog", "Tracker Type Select"))
-        self.realFaceRadioButton.setText(_translate("Dialog", "Real Human Face Detect"))
-        self.animeFaceRadioButton.setText(_translate("Dialog", "Anime Face Detect"))
+        self.real_face_radio_button.setText(_translate("Dialog", "Real Human Face Detect"))
+        self.anime_face_radio_button.setText(_translate("Dialog", "Anime Face Detect"))
 
 class Main_Form_Event_Handle:
 
@@ -174,13 +173,20 @@ class Main_Form_Event_Handle:
         self.tracker_type = ""
         self.path = ""
         self.wh = ["",""]
+        self.detection_file = ""
+
         self.main_dialog = main_dialog
         
         self.main_dialog.tracker_type_button.clicked.connect(self.trackerTypeButtonEvent)
         self.main_dialog.browse_button.clicked.connect(self.browseFileDialog)
         self.main_dialog.directory_tree_view.clicked.connect(self.directoryViewClick)
         self.main_dialog.resize_checkBox.stateChanged.connect(self.resizeCheckbox)
-        
+
+        self.main_dialog.real_face_radio_button.clicked.connect(lambda: self.detectionFileCheck("real"))
+        self.main_dialog.anime_face_radio_button.clicked.connect(lambda: self.detectionFileCheck("anime"))
+
+        self.main_dialog.run_button.clicked.connect(self.makeOptionDictionary)
+
         #icon
         self.setIcons()
     def setIcons(self):
@@ -243,7 +249,7 @@ class Main_Form_Event_Handle:
     def directoryViewClick(self, index):
         path = self.main_dialog.sender().model().filePath(index)
         fname, ext = os.path.splitext(path)
-        if ext == '.jpg' or ext == '.png':
+        if ext == '.jpg' or ext == '.png' or ext == '.PNG' or ext == '.jpeg' or ext == '.JPEG' or ext == '.JPG':
             image_profile = QtGui.QPixmap(path)
             image_profile = image_profile.scaledToHeight(381)
             image_profile = image_profile.scaledToWidth(341)
@@ -260,13 +266,34 @@ class Main_Form_Event_Handle:
             resize_form_dialog.exec_()
             self.wh = resize_output.getOutput()
 
-            
+    def detectionFileCheck(self, detection_object):
+        if detection_object == "real":
+            self.detection_file = ".\detection-files\haarcascade_frontalface_default.xml"
+        elif detection_object == "anime":
+            self.detection_file = ".\detection-files\lbpcascade_animeface.xml"
+        else:
+            self.detection_file = None
+
+    def makeOptionDictionary(self):
+        self.options = {
+                        'input_path':self.path,
+                        'tracker':self.tracker_type, 
+                        'face_alignment':self.main_dialog.face_align_checkBox.isChecked(), 
+                        'resize_output':self.main_dialog.resize_checkBox.isChecked(), 
+                        'resize_width':self.wh[0],
+                        'resize_height':self.wh[1], 
+                        'detection_file':self.detection_file
+                        }
+        print(self.options)
+        
+
     def errorMessageBox(self, title="", content="Error"):
         QtWidgets.QMessageBox.about(self.main_dialog, title, content)
 
 
-#class CASF_Main_Function():
-
+class CASF_Main_Function():
+    def __init__(self, options, paths):
+        pass
 
 if __name__ == "__main__":
     
@@ -279,6 +306,5 @@ if __name__ == "__main__":
 
     # ===========Event Handle Codes=============== #
     event_handle = Main_Form_Event_Handle(main_form_ui)
-
     dialog.show()
     sys.exit(app.exec_())
