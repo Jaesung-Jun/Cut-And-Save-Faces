@@ -7,16 +7,16 @@ Face pic collecting tool
 </h4>
 
 <div align="center">
-  <a><img src="https://img.shields.io/badge/released-1.2--CUI-blue"></a>
+  <a href="https://github.com/Jaesung-Jun/Cut-And-Save-Faces/releases"><img src="https://img.shields.io/badge/released-1.2--CUI-blue"></a>
   <br>
-  <a><img src="https://img.shields.io/badge/PyQt5-5.13.0-green"></a>
-  <a><img src="https://img.shields.io/badge/opencv--python-4.1.0.25-green"></a>
-  <a><img src="https://img.shields.io/badge/opencv--contrib--python-4.1.0.25-green"></a>
-  <a><img src="https://img.shields.io/badge/dlib-19.17.0-green"></a>
-  <a><img src="https://img.shields.io/badge/imutils-0.5.2-green"></a>
+  <a href="https://pypi.org/project/PyQt5/"><img src="https://img.shields.io/badge/PyQt5-5.13.0-green"></a>
+  <a href="https://pypi.org/project/opencv-python/"><img src="https://img.shields.io/badge/opencv--python-4.1.0.25-green"></a>
+  <a href="https://pypi.org/project/opencv-contrib-python/"><img src="https://img.shields.io/badge/opencv--contrib--python-4.1.0.25-green"></a>
+  <a href="https://pypi.org/project/dlib/"><img src="https://img.shields.io/badge/dlib-19.17.0-green"></a>
+  <a href="https://pypi.org/project/imutils/"><img src="https://img.shields.io/badge/imutils-0.5.2-green"></a>
   <br>
   <a><img src="https://img.shields.io/badge/GUI-Developing-yellowgreen"></a>
-  <a><img src="https://img.shields.io/badge/licence-MIT-lightgrey"></a>
+  <a href="https://raw.githubusercontent.com/Jaesung-Jun/Cut-And-Save-Faces/master/LICENSE"><img src="https://img.shields.io/badge/licence-MIT-lightgrey"></a>
 </div>
 
 ## Description
