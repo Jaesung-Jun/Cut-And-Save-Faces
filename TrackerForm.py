@@ -30,6 +30,7 @@ class Tracker_Type_Select_UI(QWidget):
         self.MIL = QtWidgets.QRadioButton(self.groupBox)
         self.MIL.setGeometry(QtCore.QRect(10, 30, 108, 19))
         self.MIL.setObjectName("MIL")
+        self.MIL.setChecked(True)
 
         self.BOOSTING = QtWidgets.QRadioButton(self.groupBox)
         self.BOOSTING.setGeometry(QtCore.QRect(10, 70, 108, 19))
