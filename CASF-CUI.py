@@ -1,7 +1,6 @@
 import cv2
 import os
 import dlib
-import numpy as np
 from imutils.face_utils import FaceAligner
 from imutils.face_utils import rect_to_bb
 from imutils import face_utils
@@ -49,24 +48,7 @@ if yorn == 'y':
         print("You selected Default(100)")
         resize_num = 100
 if __name__ == '__main__' :
-    #tracker_types = ['BOOSTING', 'MIL','KCF', 'TLD', 'MEDIANFLOW', 'GOTURN']
-    print("Select tracker type : BOOSTING, MIL, KCF, TLD, MEDIANFLOW, GOTURN")
-    print("DEFAULT : MIL")
-    tracker_type = input("-> ")
-    if tracker_type == 'BOOSTING':
-            tracker = cv2.TrackerBoosting_create()
-    elif tracker_type == 'MIL':
-            tracker = cv2.TrackerMIL_create()
-    elif tracker_type == 'KCF':
-            tracker = cv2.TrackerKCF_create()
-    elif tracker_type == 'TLD':
-            tracker = cv2.TrackerTLD_create()
-    elif tracker_type == 'MEDIANFLOW':
-            tracker = cv2.TrackerMedianFlow_create()
-    elif tracker_type == 'GOTURN':
-            tracker = cv2.TrackerGOTURN_create()
-    else:
-        tracker = cv2.TrackerMIL_create()
+
     file_num = os.listdir(pathofimg)
     print(file_num)
     face_cascade = cv2.CascadeClassifier()

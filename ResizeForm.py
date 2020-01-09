@@ -114,7 +114,8 @@ class Resize_Form_Event_Handler():
             pass
         elif regex.match(text) == None:
             QMessageBox.about(self.widget, "Error", "You can enter only number")
-    
+        elif int(text) <= 0:
+            QMessageBox.about(self.widget, "Error", "You can enter only number that greater than 0")
     def getOutput(self):
         return self.wh
 """

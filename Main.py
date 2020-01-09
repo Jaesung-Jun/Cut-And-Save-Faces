@@ -15,9 +15,9 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import QDialog
 from PyQt5.QtCore import QDir 
 import os
-import TrackerForm
 import ctypes
 import ResizeForm
+import CASF
 
 class Main_Form_Ui(QDialog):
     def setupUi(self, Dialog):
@@ -142,13 +142,8 @@ class Main_Form_Ui(QDialog):
         font.setFamily("Arial")
         self.made_by_label.setFont(font)
         self.made_by_label.setObjectName("made_by_label")
-
-        self.tracker_type_button = QtWidgets.QPushButton(Dialog)
-        self.tracker_type_button.setGeometry(QtCore.QRect(580, 420, 231, 41))
-        self.tracker_type_button.setObjectName("tracker_type_button")
-        self.retranslateUi(Dialog)
-        QtCore.QMetaObject.connectSlotsByName(Dialog)
-
+        
+        self.retranslateUi(dialog)
 
     def retranslateUi(self, Dialog):
         _translate = QtCore.QCoreApplication.translate
@@ -162,7 +157,6 @@ class Main_Form_Ui(QDialog):
         self.image_view_label.setText(_translate("Dialog", "Image View"))
         self.directory_view_label.setText(_translate("Dialog", "Directory View"))
         self.made_by_label.setText(_translate("Dialog", "Made by Jae-sung Jun"))
-        self.tracker_type_button.setText(_translate("Dialog", "Tracker Type Select"))
         self.real_face_radio_button.setText(_translate("Dialog", "Real Human Face Detect"))
         self.anime_face_radio_button.setText(_translate("Dialog", "Anime Face Detect"))
 
@@ -170,14 +164,12 @@ class Main_Form_Event_Handle:
 
     def __init__(self, main_dialog):
 
-        self.tracker_type = ""
         self.path = ""
         self.wh = ["",""]
         self.detection_file = ""
 
         self.main_dialog = main_dialog
         
-        self.main_dialog.tracker_type_button.clicked.connect(self.trackerTypeButtonEvent)
         self.main_dialog.browse_button.clicked.connect(self.browseFileDialog)
         self.main_dialog.directory_tree_view.clicked.connect(self.directoryViewClick)
         self.main_dialog.resize_checkBox.stateChanged.connect(self.resizeCheckbox)
@@ -185,8 +177,8 @@ class Main_Form_Event_Handle:
         self.main_dialog.real_face_radio_button.clicked.connect(lambda: self.detectionFileCheck("real"))
         self.main_dialog.anime_face_radio_button.clicked.connect(lambda: self.detectionFileCheck("anime"))
 
-        self.main_dialog.run_button.clicked.connect(self.makeOptionDictionary)
-
+        self.main_dialog.run_button.clicked.connect(self.run)
+        
         #icon
         self.setIcons()
     def setIcons(self):
@@ -200,8 +192,6 @@ class Main_Form_Event_Handle:
         ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID(myappid)
 
         # ============Button Icon Setting============ #
-        self.main_dialog.tracker_type_button.setIcon(QtGui.QIcon(icons_dir + 'select.ico'))
-        self.main_dialog.tracker_type_button.setIconSize(QtCore.QSize(24, 24))
 
         self.main_dialog.browse_button.setIcon(QtGui.QIcon(icons_dir + 'browse.ico'))
         self.main_dialog.browse_button.setIconSize(QtCore.QSize(24, 24))
@@ -209,30 +199,10 @@ class Main_Form_Event_Handle:
         self.main_dialog.run_button.setIcon(QtGui.QIcon(icons_dir + 'run.ico'))
         self.main_dialog.run_button.setIconSize(QtCore.QSize(24, 24))
 
-
-    def trackerTypeButtonEvent(self):
-        tracker_form_dialog = QtWidgets.QDialog()
-        tracker_type_select = TrackerForm.Tracker_Type_Select_UI()
-        tracker_type_select.setupUi(tracker_form_dialog, self.tracker_type)
-        tracker_form_dialog.show()
-        tracker_form_dialog.exec_()
-        self.tracker_type = tracker_type_select.getOutput()
-        if self.tracker_type != "":
-            self.main_dialog.tracker_type_button.setText("Selected Tracker Type : {}".format(self.tracker_type))
-    
     def browseFileDialog(self):
-
         self.path = str(QtWidgets.QFileDialog.getExistingDirectory(self.main_dialog, "Select Directory"))
         #Path is Exist
         if os.path.exists(self.path) == True:
-            """
-            for (path, dir, files) in os.walk("c:/"):
-                for filename in files:
-                    ext = os.path.splitext(filename)[-1]
-                    if ext == '.jpg' or ext == '.png':
-                        img_file_path = path + "/" + filename
-                        print(img_file_path)
-            """
             self.main_dialog.path_text.setText(self.path)  
             self.model = QtWidgets.QFileSystemModel()
             self.model.setRootPath('')
@@ -272,28 +242,43 @@ class Main_Form_Event_Handle:
         elif detection_object == "anime":
             self.detection_file = ".\detection-files\lbpcascade_animeface.xml"
         else:
-            self.detection_file = None
+            self.detection_file = ""
 
-    def makeOptionDictionary(self):
+    def run(self):
         self.options = {
                         'input_path':self.path,
-                        'tracker':self.tracker_type, 
                         'face_alignment':self.main_dialog.face_align_checkBox.isChecked(), 
                         'resize_output':self.main_dialog.resize_checkBox.isChecked(), 
                         'resize_width':self.wh[0],
                         'resize_height':self.wh[1], 
                         'detection_file':self.detection_file
                         }
-        print(self.options)
-        
+            
+        if self.checkOptions(self.options) == False:
+            run = CASF.CASF_Main(self.options)
+    
+    def checkOptions(self, options):
+        err = False
+        # Exception Handling
+        if self.options['input_path'] == "":
+            self.errorMessageBox("Error", "Please select your input directory path")
+            err = True
+        elif self.options['detection_file'] == "":
+            self.errorMessageBox("Error", "Please select your detection object type ({0}, {1})".format("anime face", "real human face"))
+            err = True
+
+        if self.options['resize_output'] == True:
+            if self.options['resize_width'] == "":
+                self.errorMessageBox("Error", "Please enter the number of pixels you want to resize")
+                err = True
+            elif self.options['resize_height'] == "":
+                self.errorMessageBox("Error", "Please enter the number of pixels you want to resize")
+                err = True
+
+        return err
 
     def errorMessageBox(self, title="", content="Error"):
         QtWidgets.QMessageBox.about(self.main_dialog, title, content)
-
-
-class CASF_Main_Function():
-    def __init__(self, options, paths):
-        pass
 
 if __name__ == "__main__":
     
