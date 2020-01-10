@@ -255,7 +255,7 @@ class Main_Form_Event_Handle:
                         }
             
         if self.checkOptions(self.options) == False:
-            run = CASF.CASF_Main(self.options)
+            run = CASF.CASF_Main(self.options, self.main_dialog)
     
     def checkOptions(self, options):
         err = False
@@ -268,10 +268,7 @@ class Main_Form_Event_Handle:
             err = True
 
         if self.options['resize_output'] == True:
-            if self.options['resize_width'] == "":
-                self.errorMessageBox("Error", "Please enter the number of pixels you want to resize")
-                err = True
-            elif self.options['resize_height'] == "":
+            if self.options['resize_width'] == "" or self.options['resize_height'] == "":
                 self.errorMessageBox("Error", "Please enter the number of pixels you want to resize")
                 err = True
 
