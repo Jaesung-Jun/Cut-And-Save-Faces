@@ -50,6 +50,6 @@ Please note <a href="https://github.com/Jaesung-Jun/Cut-And-Save-Faces/blob/mast
 
 ## References
 + **XML & dat Files Reference**
-  * https://github.com/opencv/opencv/blob/master/data/haarcascades/
+  * https://github.com/opencv/opencv/blob/master/data/
   * https://github.com/nagadomi/lbpcascade_animeface
   * https://github.com/AKSHAYUBHAT/TensorFace/blob/master/openface/models/dlib/shape_predictor_68_face_landmarks.dat
