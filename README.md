@@ -38,7 +38,7 @@ Written by Python. (uses Qt to develop its graphical interface)
 ## Features
 * [ ] support video files
 * [x] Face Alignment
-* [ ] Graphic InterFace
+* [x] Graphic InterFace
 * [ ] Labeling
 ## Requirements
 * Ubuntu , macOS, Windows
