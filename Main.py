@@ -255,6 +255,7 @@ class Main_Form_Event_Handle:
                         }
             
         if self.checkOptions(self.options) == False:
+            self.main_dialog.progressBar.setProperty("value", 0)
             run = CASF.CASF_Main(self.options, self.main_dialog)
     
     def checkOptions(self, options):
