@@ -53,6 +53,7 @@ Please note <a href="https://github.com/Jaesung-Jun/Cut-And-Save-Faces/blob/mast
   * https://github.com/opencv/opencv/blob/master/data/
   * https://github.com/nagadomi/lbpcascade_animeface
   * https://github.com/AKSHAYUBHAT/TensorFace/blob/master/openface/models/dlib/shape_predictor_68_face_landmarks.dat
++ Copyrights
   Copyright (C) 2000-2020, Intel Corporation, all rights reserved.
   Copyright (C) 2009-2011, Willow Garage Inc., all rights reserved.
   Copyright (C) 2009-2016, NVIDIA Corporation, all rights reserved.
