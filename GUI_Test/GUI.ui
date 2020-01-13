@@ -123,7 +123,7 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>120</y>
+      <y>130</y>
       <width>161</width>
       <height>16</height>
      </rect>
@@ -135,14 +135,27 @@
    <widget class="QRadioButton" name="animeFaceRadioButton">
     <property name="geometry">
      <rect>
-      <x>190</x>
-      <y>120</y>
+      <x>10</x>
+      <y>110</y>
       <width>141</width>
       <height>16</height>
      </rect>
     </property>
     <property name="text">
      <string>Anime Face Detect</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="customDetectionFile">
+    <property name="geometry">
+     <rect>
+      <x>180</x>
+      <y>120</y>
+      <width>141</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Select Detection File</string>
     </property>
    </widget>
   </widget>
@@ -269,19 +282,6 @@
    </property>
    <property name="text">
     <string>Made by Jae-sung Jun</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="pushButton_3">
-   <property name="geometry">
-    <rect>
-     <x>580</x>
-     <y>420</y>
-     <width>231</width>
-     <height>41</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Tracker Type Select</string>
    </property>
   </widget>
  </widget>

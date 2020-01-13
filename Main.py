@@ -35,21 +35,21 @@ class Main_Form_Ui(QDialog):
         self.run_button.setFont(font)
         self.run_button.setObjectName("run_button")
 
-        self.progressBar = QtWidgets.QProgressBar(Dialog)
-        self.progressBar.setGeometry(QtCore.QRect(360, 550, 461, 41))
-        self.progressBar.setProperty("value", 0)
-        self.progressBar.setObjectName("progressBar")
+        self.progress_bar = QtWidgets.QProgressBar(Dialog)
+        self.progress_bar.setGeometry(QtCore.QRect(360, 550, 461, 41))
+        self.progress_bar.setProperty("value", 0)
+        self.progress_bar.setObjectName("progress_bar")
 
-        self.groupBox = QtWidgets.QGroupBox(Dialog)
-        self.groupBox.setGeometry(QtCore.QRect(20, 440, 331, 151))
+        self.group_box = QtWidgets.QGroupBox(Dialog)
+        self.group_box.setGeometry(QtCore.QRect(20, 440, 331, 151))
         font = QtGui.QFont()
         font.setFamily("Arial")
         font.setBold(False)
         font.setWeight(50)
-        self.groupBox.setFont(font)
-        self.groupBox.setObjectName("groupBox")
+        self.group_box.setFont(font)
+        self.group_box.setObjectName("group_box")
 
-        self.face_align_checkBox = QtWidgets.QCheckBox(self.groupBox)
+        self.face_align_checkBox = QtWidgets.QCheckBox(self.group_box)
         self.face_align_checkBox.setGeometry(QtCore.QRect(10, 20, 131, 41))
         font = QtGui.QFont()
         font.setFamily("Arial")
@@ -58,21 +58,29 @@ class Main_Form_Ui(QDialog):
         self.face_align_checkBox.setFont(font)
         self.face_align_checkBox.setObjectName("face_align_checkbox")
 
-        self.line = QtWidgets.QFrame(self.groupBox)
+        self.line = QtWidgets.QFrame(self.group_box)
         self.line.setGeometry(QtCore.QRect(0, 100, 331, 16))
         self.line.setFrameShape(QtWidgets.QFrame.HLine)
         self.line.setFrameShadow(QtWidgets.QFrame.Sunken)
         self.line.setObjectName("line")
 
-        self.real_face_radio_button = QtWidgets.QRadioButton(self.groupBox)
-        self.real_face_radio_button.setGeometry(QtCore.QRect(10, 120, 161, 16))
+        self.real_face_radio_button = QtWidgets.QRadioButton(self.group_box)
+        self.real_face_radio_button.setGeometry(QtCore.QRect(10, 130, 161, 16))
         self.real_face_radio_button.setObjectName("real_face_radio_button")
 
-        self.anime_face_radio_button = QtWidgets.QRadioButton(self.groupBox)
-        self.anime_face_radio_button.setGeometry(QtCore.QRect(190, 120, 141, 16))
+        self.anime_face_radio_button = QtWidgets.QRadioButton(self.group_box)
+        self.anime_face_radio_button.setGeometry(QtCore.QRect(10, 110, 141, 16))
         self.anime_face_radio_button.setObjectName("anime_face_radio_button")
 
-        self.resize_checkBox = QtWidgets.QCheckBox(self.groupBox)
+        self.detection_select_group = QtWidgets.QButtonGroup()
+        self.detection_select_group.addButton(self.anime_face_radio_button)
+        self.detection_select_group.addButton(self.real_face_radio_button)
+    
+        self.custom_detection_file = QtWidgets.QPushButton(self.group_box)
+        self.custom_detection_file.setGeometry(QtCore.QRect(180, 120, 141, 21))
+        self.custom_detection_file.setObjectName("custom_detection_file")
+
+        self.resize_checkBox = QtWidgets.QCheckBox(self.group_box)
         self.resize_checkBox.setGeometry(QtCore.QRect(10, 60, 181, 41))
         font = QtGui.QFont()
         font.setFamily("Arial")
@@ -149,7 +157,7 @@ class Main_Form_Ui(QDialog):
         _translate = QtCore.QCoreApplication.translate
         Dialog.setWindowTitle(_translate("Dialog", "CASF"))
         self.run_button.setText(_translate("Dialog", "Run"))
-        self.groupBox.setTitle(_translate("Dialog", "Options"))
+        self.group_box.setTitle(_translate("Dialog", "Options"))
         self.face_align_checkBox.setText(_translate("Dialog", "Face Alignment"))
         self.resize_checkBox.setText(_translate("Dialog", "Resize Outputs"))
         self.path_label.setText(_translate("Dialog", "Path"))
@@ -159,7 +167,8 @@ class Main_Form_Ui(QDialog):
         self.made_by_label.setText(_translate("Dialog", "Made by Jae-sung Jun"))
         self.real_face_radio_button.setText(_translate("Dialog", "Real Human Face Detect"))
         self.anime_face_radio_button.setText(_translate("Dialog", "Anime Face Detect"))
-
+        self.custom_detection_file.setText(_translate("Dialog", "Select Detection File"))
+       
 class Main_Form_Event_Handle:
 
     def __init__(self, main_dialog):
@@ -173,12 +182,13 @@ class Main_Form_Event_Handle:
         self.main_dialog.browse_button.clicked.connect(self.browseFileDialog)
         self.main_dialog.directory_tree_view.clicked.connect(self.directoryViewClick)
         self.main_dialog.resize_checkBox.stateChanged.connect(self.resizeCheckbox)
-
+        self.main_dialog.custom_detection_file.clicked.connect(self.custom_detection_fileSelect)
+        
         self.main_dialog.real_face_radio_button.clicked.connect(lambda: self.detectionFileCheck("real"))
         self.main_dialog.anime_face_radio_button.clicked.connect(lambda: self.detectionFileCheck("anime"))
 
         self.main_dialog.run_button.clicked.connect(self.run)
-        
+       
         #icon
         self.setIcons()
     def setIcons(self):
@@ -244,18 +254,38 @@ class Main_Form_Event_Handle:
         else:
             self.detection_file = ""
 
+    def custom_detection_fileSelect(self):
+        
+        self.main_dialog.detection_select_group.setExclusive(False)
+
+        self.main_dialog.real_face_radio_button.setChecked(False)
+        self.main_dialog.anime_face_radio_button.setChecked(False)
+
+        self.main_dialog.detection_select_group.setExclusive(True)
+
+        fname = QtWidgets.QFileDialog.getOpenFileName(self.main_dialog, 'Open file', "", "XML Files(*.xml);; All Files(*)")
+        
+        if os.path.isfile(fname[0]):
+            self.detection_file = fname[0]
+            self.main_dialog.custom_detection_file.setText("Selected")
+        elif fname[0] == "":
+            pass
+        elif not os.path.isfile(fname[0]):
+            self.errorMessageBox("Error", "Please select other detection file")
+
+
     def run(self):
         self.options = {
                         'input_path':self.path,
                         'face_alignment':self.main_dialog.face_align_checkBox.isChecked(), 
                         'resize_output':self.main_dialog.resize_checkBox.isChecked(), 
                         'resize_width':self.wh[0],
-                        'resize_height':self.wh[1], 
+                        'resize_height':self.wh[1],
                         'detection_file':self.detection_file
                         }
-            
+        #print(self.options)
         if self.checkOptions(self.options) == False:
-            self.main_dialog.progressBar.setProperty("value", 0)
+            self.main_dialog.progress_bar.setProperty("value", 0)
             run = CASF.CASF_Main(self.options, self.main_dialog)
     
     def checkOptions(self, options):
@@ -264,6 +294,7 @@ class Main_Form_Event_Handle:
         if self.options['input_path'] == "":
             self.errorMessageBox("Error", "Please select your input directory path")
             err = True
+
         elif self.options['detection_file'] == "":
             self.errorMessageBox("Error", "Please select your detection object type ({0}, {1})".format("anime face", "real human face"))
             err = True
