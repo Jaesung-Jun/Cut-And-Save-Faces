@@ -54,13 +54,12 @@ Please note <a href="https://github.com/Jaesung-Jun/Cut-And-Save-Faces/blob/mast
   * https://github.com/nagadomi/lbpcascade_animeface
   * https://github.com/AKSHAYUBHAT/TensorFace/blob/master/openface/models/dlib/shape_predictor_68_face_landmarks.dat
 + Copyrights
-  Copyright (C) 2000-2020, Intel Corporation, all rights reserved.<br>
-  Copyright (C) 2009-2011, Willow Garage Inc., all rights reserved.<br>
-  Copyright (C) 2009-2016, NVIDIA Corporation, all rights reserved.<br>
-  Copyright (C) 2010-2013, Advanced Micro Devices, Inc., all rights reserved.<br>
-  Copyright (C) 2015-2016, OpenCV Foundation, all rights reserved.<br>
-  Copyright (C) 2015-2016, Itseez Inc., all rights reserved.<br>
-  Copyright (C) 2019-2020, Xperience AI, all rights reserved.<br>
-  Third party copyrights are property of their respective owners.<br>
-  <br>
-  Please note https://github.com/opencv/opencv/blob/master/LICENSE before using this software.
+  * Copyright (C) 2000-2020, Intel Corporation, all rights reserved.
+  * Copyright (C) 2009-2011, Willow Garage Inc., all rights reserved.
+  * Copyright (C) 2009-2016, NVIDIA Corporation, all rights reserved.
+  * Copyright (C) 2010-2013, Advanced Micro Devices, Inc., all rights reserved.
+  * Copyright (C) 2015-2016, OpenCV Foundation, all rights reserved.
+  * Copyright (C) 2015-2016, Itseez Inc., all rights reserved.
+  * Copyright (C) 2019-2020, Xperience AI, all rights reserved.
+  * Third party copyrights are property of their respective owners.
+  * **Please note https://github.com/opencv/opencv/blob/master/LICENSE before using this software.**
