@@ -20,14 +20,14 @@ Face pic collecting tool
 </div>
 
 ## Description
-Cut And Save Faces is face pictures collecting tool.<br>
+Cut And Save Faces is pictures collecting tool.<br>
 Written by Python. (uses Qt to develop its graphical interface)
 <div align="center">
 <img src="https://raw.githubusercontent.com/Jaesung-Jun/Cut-And-Save-Faces/master/imgs/gui.PNG" width=500>
 <h5> Input </h5>
 <img src="https://raw.githubusercontent.com/Jaesung-Jun/Cut-And-Save-Faces/master/sample/red_velvet.jpg" width=200 />
 <br>
-<h5> Output </h5>
+<h5> Output (used haarcascade_frontalface_default.xml)</h5>
 <img src="https://raw.githubusercontent.com/Jaesung-Jun/Cut-And-Save-Faces/master/sample/sample_outputs/red_velvet.jpg_0_cropped.jpg" width=80/>
 <img src="https://raw.githubusercontent.com/Jaesung-Jun/Cut-And-Save-Faces/master/sample/sample_outputs/red_velvet.jpg_1_cropped.jpg" width=80/>
 <img src="https://raw.githubusercontent.com/Jaesung-Jun/Cut-And-Save-Faces/master/sample/sample_outputs/red_velvet.jpg_2_cropped.jpg" width=80/>
@@ -41,12 +41,25 @@ Written by Python. (uses Qt to develop its graphical interface)
 * [x] Graphic InterFace
 * [ ] Labeling
 ## Requirements
-* Ubuntu , macOS, Windows
+* Ubuntu(Not tested) , macOS(Not tested), Windows
 * PyQt5
 * Python 3 
-  
+
+contents of <a href="https://github.com/Jaesung-Jun/Cut-And-Save-Faces/blob/master/requirements.txt">requirements.txt</a> are its developed environment information. Probably, It can execute at higher versions of libraries.<br>
 Please note <a href="https://github.com/Jaesung-Jun/Cut-And-Save-Faces/blob/master/requirements.txt">requirements.txt</a>
 ## Installation
+
+### dlib install guide
+
+'''bash
+# You can see dlib install guide at
+# https://www.learnopencv.com/install-dlib-on-windows/
+'''
+
+## Execution
+'''bash
+python CASF-Main.py
+'''
 
 ## References
 + **XML & dat Files Reference**
@@ -63,3 +76,6 @@ Please note <a href="https://github.com/Jaesung-Jun/Cut-And-Save-Faces/blob/mast
   * Copyright (C) 2019-2020, Xperience AI, all rights reserved.
   * Third party copyrights are property of their respective owners.
   * *Please note https://github.com/opencv/opencv/blob/master/LICENSE before using this software.*
+
+
+

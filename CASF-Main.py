@@ -327,7 +327,7 @@ if __name__ == "__main__":
     
     app = QtWidgets.QApplication(sys.argv)
 
-    dialog = QtWidgets.QDialog()
+    dialog = QtWidgets.QMainWindow()
     
     main_form_ui = Main_Form_Ui()
     main_form_ui.setupUi(dialog)
