@@ -19,7 +19,7 @@ Face pic collecting tool
   <a href="https://raw.githubusercontent.com/Jaesung-Jun/Cut-And-Save-Faces/master/LICENSE"><img src="https://img.shields.io/badge/licence-MIT-lightgrey"></a>
 </div>
 
-## Description
+## Description😊
 Cut And Save Faces is pictures collecting tool.<br>
 Written by Python. (uses Qt to develop its graphical interface)
 <div align="center">
@@ -68,7 +68,7 @@ Written by Python. (uses Qt to develop its graphical interface)
 #  ●  imutils==0.5.3
 #  ●  PyQt5==5.14.1
 #
-# Probably, It can execute with higher versions of libraries.
+# Probably, CASF can be executed with higher versions of libraries.
 #
 $ pip install opencv-python
 $ pip install opencv-contrib-python
