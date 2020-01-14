@@ -19,7 +19,7 @@ Face pic collecting tool
   <a href="https://raw.githubusercontent.com/Jaesung-Jun/Cut-And-Save-Faces/master/LICENSE"><img src="https://img.shields.io/badge/licence-MIT-lightgrey"></a>
 </div>
 
-## Description😊
+## Description
 Cut And Save Faces is pictures collecting tool.<br>
 Written by Python. (uses Qt to develop its graphical interface)
 <div align="center">
