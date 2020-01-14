@@ -23,7 +23,7 @@ Face pic collecting tool
 Cut And Save Faces is pictures collecting tool.<br>
 Written by Python. (uses Qt to develop its graphical interface)
 <div align="center">
-<img src="https://raw.githubusercontent.com/Jaesung-Jun/Cut-And-Save-Faces/master/imgs/gui.PNG" width=500>
+<img src="https://raw.githubusercontent.com/Jaesung-Jun/Cut-And-Save-Faces/master/imgs/gui.png" width=500/>
 <h5> Input </h5>
 <img src="https://raw.githubusercontent.com/Jaesung-Jun/Cut-And-Save-Faces/master/sample/red_velvet.jpg" width=200 />
 <br>
@@ -81,8 +81,19 @@ $ pip install PyQt5
 $ python CASF-Main.py
 ```
 
-### Usage
+## Usage
 
+<div align="center">
+
+<img src="https://raw.githubusercontent.com/Jaesung-Jun/Cut-And-Save-Faces/master/imgs/guide.png" width=500/>
+
+</div>
+
+* (1) : Select your input path (Select your input path (dataset's path that you want to save&cut ))
+* (2) : Select path where you want to save
+* (3) : Select output data type you want to save (or select your own detection file)
+* [Option] (3-2) : select Options
+* (4) Run
 ## References
 + **XML & dat Files Reference**
   * https://github.com/opencv/opencv/blob/master/data/
