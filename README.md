@@ -85,7 +85,7 @@ $ python CASF-Main.py
 
 <div align="center">
 
-<img src="https://raw.githubusercontent.com/Jaesung-Jun/Cut-And-Save-Faces/master/imgs/guide.png" width=500/>
+<img src="https://raw.githubusercontent.com/Jaesung-Jun/Cut-And-Save-Faces/master/imgs/guide.PNG" width=500/>
 
 </div>
 
