@@ -45,8 +45,6 @@ Written by Python. (uses Qt to develop its graphical interface)
 * PyQt5
 * Python 3 
 
-contents of <a href="https://github.com/Jaesung-Jun/Cut-And-Save-Faces/blob/master/requirements.txt">requirements.txt</a> are its developed environment information. Probably, It can execute at higher versions of libraries.<br>
-Please note <a href="https://github.com/Jaesung-Jun/Cut-And-Save-Faces/blob/master/requirements.txt">requirements.txt</a>
 ## Installation
 
 ### dlib install guide
@@ -55,10 +53,30 @@ Please note <a href="https://github.com/Jaesung-Jun/Cut-And-Save-Faces/blob/mast
 # You can see dlib install guide at
 # https://www.learnopencv.com/install-dlib-on-windows/
 ```
+### Require libraries install
+```bash
+# opencv-python, opencv-contrib-python, dlib, imutils, PyQt5
+# Please note dlib install guide
+#
+# Developed Environments
+#
+#  ●  opencv-python==4.1.0.25
+#  ●  opencv-contrib-python==4.1.0.25
+#  ●  dlib==19.17.0
+#  ●  imutils==0.5.3
+#  ●  PyQt5==5.14.1
+#
+# Probably, It can execute with higher versions of libraries.
+#
+$ pip install opencv-python
+$ pip install opencv-contrib-python
+$ pip install imutils
+$ pip install PyQt5
+```
 
 ### Execution
 ```bash
-python CASF-Main.py
+$ python CASF-Main.py
 ```
 
 ## References
