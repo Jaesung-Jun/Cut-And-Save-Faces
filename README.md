@@ -25,14 +25,14 @@ Written by Python. (uses Qt to develop its graphical interface)
 <div align="center">
 <img src="https://raw.githubusercontent.com/Jaesung-Jun/Cut-And-Save-Faces/master/imgs/gui.PNG" width=500>
 <h5> Input </h5>
-<img src="https://raw.githubusercontent.com/Jaesung-Jun/Cut-And-Save-Faces/master/sample2/red_velvet.jpg" width=200 />
+<img src="https://raw.githubusercontent.com/Jaesung-Jun/Cut-And-Save-Faces/master/sample/red_velvet.jpg" width=200 />
 <br>
 <h5> Output </h5>
-<img src="https://raw.githubusercontent.com/Jaesung-Jun/Cut-And-Save-Faces/master/sample2/sample_outputs/red_velvet.jpg_0_cropped.jpg" width=80/>
-<img src="https://raw.githubusercontent.com/Jaesung-Jun/Cut-And-Save-Faces/master/sample2/sample_outputs/red_velvet.jpg_1_cropped.jpg" width=80/>
-<img src="https://raw.githubusercontent.com/Jaesung-Jun/Cut-And-Save-Faces/master/sample2/sample_outputs/red_velvet.jpg_2_cropped.jpg" width=80/>
-<img src="https://raw.githubusercontent.com/Jaesung-Jun/Cut-And-Save-Faces/master/sample2/sample_outputs/red_velvet.jpg_3_cropped.jpg" width=80/>
-<img src="https://raw.githubusercontent.com/Jaesung-Jun/Cut-And-Save-Faces/master/sample2/sample_outputs/red_velvet.jpg_4_cropped.jpg" width=80/>
+<img src="https://raw.githubusercontent.com/Jaesung-Jun/Cut-And-Save-Faces/master/sample/sample_outputs/red_velvet.jpg_0_cropped.jpg" width=80/>
+<img src="https://raw.githubusercontent.com/Jaesung-Jun/Cut-And-Save-Faces/master/sample/sample_outputs/red_velvet.jpg_1_cropped.jpg" width=80/>
+<img src="https://raw.githubusercontent.com/Jaesung-Jun/Cut-And-Save-Faces/master/sample/sample_outputs/red_velvet.jpg_2_cropped.jpg" width=80/>
+<img src="https://raw.githubusercontent.com/Jaesung-Jun/Cut-And-Save-Faces/master/sample/sample_outputs/red_velvet.jpg_3_cropped.jpg" width=80/>
+<img src="https://raw.githubusercontent.com/Jaesung-Jun/Cut-And-Save-Faces/master/sample/sample_outputs/red_velvet.jpg_4_cropped.jpg" width=80/>
 </div>
 
 ## Features
@@ -53,7 +53,7 @@ Please note <a href="https://github.com/Jaesung-Jun/Cut-And-Save-Faces/blob/mast
   * https://github.com/opencv/opencv/blob/master/data/
   * https://github.com/nagadomi/lbpcascade_animeface
   * https://github.com/AKSHAYUBHAT/TensorFace/blob/master/openface/models/dlib/shape_predictor_68_face_landmarks.dat
-+ Copyrights
++ **Copyrights**
   * Copyright (C) 2000-2020, Intel Corporation, all rights reserved.
   * Copyright (C) 2009-2011, Willow Garage Inc., all rights reserved.
   * Copyright (C) 2009-2016, NVIDIA Corporation, all rights reserved.
@@ -62,4 +62,4 @@ Please note <a href="https://github.com/Jaesung-Jun/Cut-And-Save-Faces/blob/mast
   * Copyright (C) 2015-2016, Itseez Inc., all rights reserved.
   * Copyright (C) 2019-2020, Xperience AI, all rights reserved.
   * Third party copyrights are property of their respective owners.
-  * **Please note https://github.com/opencv/opencv/blob/master/LICENSE before using this software.**
+  * *Please note https://github.com/opencv/opencv/blob/master/LICENSE before using this software.*
