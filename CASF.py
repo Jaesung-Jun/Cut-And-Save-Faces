@@ -19,7 +19,6 @@ class CASF_Main():
             path_list, file_list = get_image_path.result()
             face_cascade = detection_file_load.result()
             detect_face = executor.submit(lambda p: self.detectFace(*p), [options, path_list, file_list, face_cascade, dialog] )
-            is_complete = detect_face.result()
                 
         if get_image_path.exception() != None :
             QMessageBox.about(dialog, "Error", "File Information Load Error")

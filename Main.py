@@ -12,18 +12,19 @@
 
 import sys
 from PyQt5 import QtCore, QtGui, QtWidgets
-from PyQt5.QtWidgets import QDialog
+from PyQt5.QtWidgets import QDialog, QMainWindow
 from PyQt5.QtCore import QDir 
 import os
 import ctypes
 import ResizeForm
 import CASF
 
-class Main_Form_Ui(QDialog):
+class Main_Form_Ui(QMainWindow):
     def setupUi(self, Dialog):
 
         Dialog.setObjectName("Dialog")
         Dialog.resize(823, 600)
+        #Dialog.setSizeGripEnabled(True)
 
         self.run_button = QtWidgets.QPushButton(Dialog)
         self.run_button.setGeometry(QtCore.QRect(360, 470, 451, 71))
@@ -129,7 +130,7 @@ class Main_Form_Ui(QDialog):
         self.directory_tree_view.setWindowTitle("directory view")
 
         self.image_view_label = QtWidgets.QLabel(Dialog)
-        self.image_view_label.setGeometry(QtCore.QRect(20, 50, 81, 16))
+        self.image_view_label.setGeometry(QtCore.QRect(20, 50, 250, 16))
         font = QtGui.QFont()
         font.setFamily("Arial")
         font.setPointSize(8)
@@ -158,7 +159,7 @@ class Main_Form_Ui(QDialog):
         Dialog.setWindowTitle(_translate("Dialog", "CASF"))
         self.run_button.setText(_translate("Dialog", "Run"))
         self.group_box.setTitle(_translate("Dialog", "Options"))
-        self.face_align_checkBox.setText(_translate("Dialog", "Face Alignment"))
+        self.face_align_checkBox.setText(_translate("Dialog", "Face Align"))
         self.resize_checkBox.setText(_translate("Dialog", "Resize Outputs"))
         self.path_label.setText(_translate("Dialog", "Path"))
         self.browse_button.setText(_translate("Dialog", "Browse"))
@@ -179,10 +180,13 @@ class Main_Form_Event_Handle:
 
         self.main_dialog = main_dialog
         
+        
+        self.main_dialog.statusBar()
         self.main_dialog.browse_button.clicked.connect(self.browseFileDialog)
         self.main_dialog.directory_tree_view.clicked.connect(self.directoryViewClick)
         self.main_dialog.resize_checkBox.stateChanged.connect(self.resizeCheckbox)
         self.main_dialog.custom_detection_file.clicked.connect(self.custom_detection_fileSelect)
+        self.main_dialog.face_align_checkBox.clicked.connect(self.faceAlignCheckboxChecked)
         
         self.main_dialog.real_face_radio_button.clicked.connect(lambda: self.detectionFileCheck("real"))
         self.main_dialog.anime_face_radio_button.clicked.connect(lambda: self.detectionFileCheck("anime"))
@@ -226,6 +230,10 @@ class Main_Form_Event_Handle:
         elif os.path.exists(self.path) == False:
             self.errorMessageBox("Directory Load Error", "Please select other directory")
     
+    def faceAlignCheckboxChecked(self):
+        if self.main_dialog.face_align_checkBox.isChecked() == True:
+            QtWidgets.QMessageBox.information(self.main_dialog, 'Information', "Face Align option is recommends at detect faces.", QtWidgets.QMessageBox.Ok)
+    
     def directoryViewClick(self, index):
         path = self.main_dialog.sender().model().filePath(index)
         fname, ext = os.path.splitext(path)
@@ -234,7 +242,10 @@ class Main_Form_Event_Handle:
             image_profile = image_profile.scaledToHeight(381)
             image_profile = image_profile.scaledToWidth(341)
             self.main_dialog.sample_photo_view.setPixmap(image_profile)
+            dir, fname = os.path.split(fname)
+            self.main_dialog.image_view_label.setText(fname + ext)
         else:
+            self.main_dialog.image_view_label.setText("Image View")
             self.main_dialog.sample_photo_view.setText("This File is Not Support")
 
     def resizeCheckbox(self):
@@ -247,6 +258,8 @@ class Main_Form_Event_Handle:
             self.wh = resize_output.getOutput()
 
     def detectionFileCheck(self, detection_object):
+        self.main_dialog.custom_detection_file.setText("Select Detection File")
+        self.main_dialog.custom_detection_file.setStyleSheet("")
         if detection_object == "real":
             self.detection_file = ".\detection-files\haarcascade_frontalface_default.xml"
         elif detection_object == "anime":
@@ -268,6 +281,7 @@ class Main_Form_Event_Handle:
         if os.path.isfile(fname[0]):
             self.detection_file = fname[0]
             self.main_dialog.custom_detection_file.setText("Selected")
+            self.main_dialog.custom_detection_file.setStyleSheet("background-color:#ffcece")
         elif fname[0] == "":
             pass
         elif not os.path.isfile(fname[0]):
@@ -296,7 +310,7 @@ class Main_Form_Event_Handle:
             err = True
 
         elif self.options['detection_file'] == "":
-            self.errorMessageBox("Error", "Please select your detection object type ({0}, {1})".format("anime face", "real human face"))
+            self.errorMessageBox("Error", "Please select your detection file")
             err = True
 
         if self.options['resize_output'] == True:
