@@ -2,8 +2,6 @@ import cv2
 import os
 import dlib
 import numpy as np
-import threading
-import concurrent.futures
 from PyQt5.QtWidgets import QMessageBox
 from imutils.face_utils import FaceAligner
 from imutils.face_utils import rect_to_bb
@@ -11,28 +9,23 @@ from imutils import face_utils
 
 class CASF_Main():
     def __init__(self, options, dialog):
-
-        with concurrent.futures.ThreadPoolExecutor(max_workers=1) as executor:
+        try:
+            path_list, file_list = self.getImagePath(options['input_path'])
+        except:
+            QMessageBox.about(dialog, "Error", "Error during get image path")
+        try:
+            face_cascade = self.detectionFileLoad(options['detection_file'])
+        except:
+            QMessageBox.about(dialog, "Error", "Error during load detection file")
             
-            get_image_path = executor.submit(self.getImagePath, (options['input_path']))
-            detection_file_load = executor.submit(self.detectionFileLoad, (options['detection_file']))
-            path_list, file_list = get_image_path.result()
-            face_cascade = detection_file_load.result()
-            detect_face = executor.submit(lambda p: self.detectFace(*p), [options, path_list, file_list, face_cascade, dialog] )
-                
-        if get_image_path.exception() != None :
-            QMessageBox.about(dialog, "Error", "File Information Load Error")
+        detect_face = self.detectFace(options, path_list, file_list, face_cascade, dialog)
 
-        if detection_file_load.exception() != None or detect_face.exception() != None:
-            QMessageBox.about(dialog, "Error", "Face Detecting Error")
-            if not os.path.isfile(options['detection_file']):
-                QMessageBox.about(dialog, "Error", "Can't Find Detection File")
-        
-        if detect_face.result() == True:
+        if detect_face == "0":
             QMessageBox.about(dialog, "Complete", "Complete :)")
-        elif detect_face.result() == False:
-            QMessageBox.about(dialog, "Complete", "Error during detecting Faces :(")
-
+        elif detect_face == "1":
+            QMessageBox.about(dialog, "Complete", "Unknown Error during detect Faces :(")
+        elif detect-face == "SaveError":
+            QMessagebox.about(dialog, "Complete", "Error during save outputs :(")
     def detectFace(self, options, path_list, file_list, face_cascade, dialog):
         TrackingState = 0
         TrackingROI = (0,0,0,0)
@@ -57,18 +50,19 @@ class CASF_Main():
                             predictor = dlib.shape_predictor("./detection-files/shape_predictor_68_face_landmarks.dat")
                             fa = FaceAligner(predictor, desiredFaceWidth=256)
                             cropped_img = fa.align(img, grayframe, dlib_cropped_img)
-
                         if options['resize_output']:
                             cropped_img = cv2.resize(cropped_img, (int(options['resize_width']), int(options['resize_height'])))
-                        cv2.imwrite("./outputs/{0}_{1}_cropped.jpg".format(str(file_list[i]), str(n)), cropped_img)
+                        try:
+                            cv2.imwrite("{0}/{1}_{2}_cropped.jpg".format(options['output_path'], str(file_list[i]), str(n)), cropped_img)
+                        except:
+                            return "SaveError"
                         n += 1
                     print("Detected {} Objects from {}".format(str(len(faces)), file_list[i]))
-
                 else:
                     print(file_list[i] + " : Can't Detect Objects :( ")
-            return True
+            return "0"
         except:
-            return False
+            return "1"
                 
         
     def detectionFileLoad(self, detection_file_path):

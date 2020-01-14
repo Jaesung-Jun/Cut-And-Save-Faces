@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file '.\GUI.ui'
 #
-# Created by: PyQt5 UI code generator 5.14.0
+# Created by: PyQt5 UI code generator 5.13.0
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -109,6 +109,9 @@ class Ui_Dialog(object):
         font.setFamily("Arial")
         self.label.setFont(font)
         self.label.setObjectName("label")
+        self.output_path_select = QtWidgets.QPushButton(Dialog)
+        self.output_path_select.setGeometry(QtCore.QRect(610, 420, 201, 41))
+        self.output_path_select.setObjectName("output_path_select")
 
         self.retranslateUi(Dialog)
         QtCore.QMetaObject.connectSlotsByName(Dialog)
@@ -128,7 +131,7 @@ class Ui_Dialog(object):
         self.label_2.setText(_translate("Dialog", "Image View"))
         self.label_4.setText(_translate("Dialog", "Directory View"))
         self.label.setText(_translate("Dialog", "Made by Jae-sung Jun"))
-
+        self.output_path_select.setText(_translate("Dialog", "Select Output Path"))
 
 if __name__ == "__main__":
     import sys

@@ -284,6 +284,19 @@
     <string>Made by Jae-sung Jun</string>
    </property>
   </widget>
+  <widget class="QPushButton" name="output_path_select">
+   <property name="geometry">
+    <rect>
+     <x>610</x>
+     <y>420</y>
+     <width>201</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Select Output Path</string>
+   </property>
+  </widget>
  </widget>
  <resources/>
  <connections/>

@@ -40,7 +40,9 @@ Written by Python. (uses Qt to develop its graphical interface)
 * [x] Face Alignment
 * [x] Graphic InterFace
 * [ ] Labeling
+  
 ## Requirements
+
 * Ubuntu(Not tested) , macOS(Not tested), Windows
 * PyQt5
 * Python 3 

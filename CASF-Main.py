@@ -70,7 +70,7 @@ class Main_Form_Ui(QMainWindow):
         self.real_face_radio_button.setObjectName("real_face_radio_button")
 
         self.anime_face_radio_button = QtWidgets.QRadioButton(self.group_box)
-        self.anime_face_radio_button.setGeometry(QtCore.QRect(10, 110, 141, 16))
+        self.anime_face_radio_button.setGeometry(QtCore.QRect(10, 110, 161, 16))
         self.anime_face_radio_button.setObjectName("anime_face_radio_button")
 
         self.detection_select_group = QtWidgets.QButtonGroup()
@@ -152,6 +152,10 @@ class Main_Form_Ui(QMainWindow):
         self.made_by_label.setFont(font)
         self.made_by_label.setObjectName("made_by_label")
         
+        self.output_path_select = QtWidgets.QPushButton(Dialog)
+        self.output_path_select.setGeometry(QtCore.QRect(610, 420, 201, 41))
+        self.output_path_select.setObjectName("output_path_select")
+
         self.retranslateUi(dialog)
 
     def retranslateUi(self, Dialog):
@@ -166,35 +170,34 @@ class Main_Form_Ui(QMainWindow):
         self.image_view_label.setText(_translate("Dialog", "Image View"))
         self.directory_view_label.setText(_translate("Dialog", "Directory View"))
         self.made_by_label.setText(_translate("Dialog", "Made by Jae-sung Jun"))
-        self.real_face_radio_button.setText(_translate("Dialog", "Real Human Face Detect"))
+        self.real_face_radio_button.setText(_translate("Dialog", "Human Face Detect"))
         self.anime_face_radio_button.setText(_translate("Dialog", "Anime Face Detect"))
         self.custom_detection_file.setText(_translate("Dialog", "Select Detection File"))
-       
+        self.output_path_select.setText(_translate("Dialog", "Select Output Path"))
+
 class Main_Form_Event_Handle:
 
     def __init__(self, main_dialog):
 
         self.path = ""
+        self.output_path = ""
         self.wh = ["",""]
         self.detection_file = ""
 
         self.main_dialog = main_dialog
-        
-        
-        self.main_dialog.statusBar()
         self.main_dialog.browse_button.clicked.connect(self.browseFileDialog)
         self.main_dialog.directory_tree_view.clicked.connect(self.directoryViewClick)
         self.main_dialog.resize_checkBox.stateChanged.connect(self.resizeCheckbox)
         self.main_dialog.custom_detection_file.clicked.connect(self.custom_detection_fileSelect)
         self.main_dialog.face_align_checkBox.clicked.connect(self.faceAlignCheckboxChecked)
-        
+        self.main_dialog.output_path_select.clicked.connect(self.getOutputPath)
         self.main_dialog.real_face_radio_button.clicked.connect(lambda: self.detectionFileCheck("real"))
         self.main_dialog.anime_face_radio_button.clicked.connect(lambda: self.detectionFileCheck("anime"))
 
         self.main_dialog.run_button.clicked.connect(self.run)
-       
         #icon
         self.setIcons()
+    
     def setIcons(self):
         icons_dir = os.path.dirname(os.path.realpath(__file__)) + "/icons/"
 
@@ -214,16 +217,18 @@ class Main_Form_Event_Handle:
         self.main_dialog.run_button.setIconSize(QtCore.QSize(24, 24))
 
     def browseFileDialog(self):
-        self.path = str(QtWidgets.QFileDialog.getExistingDirectory(self.main_dialog, "Select Directory"))
+        self.path = str(QtWidgets.QFileDialog.getExistingDirectory(self.main_dialog, "Select Directory", self.path))
         #Path is Exist
         if os.path.exists(self.path) == True:
-            self.main_dialog.path_text.setText(self.path)  
+            self.main_dialog.browse_button.setStyleSheet("background-color:#ffcece")
+            self.main_dialog.path_text.setText(self.path)
             self.model = QtWidgets.QFileSystemModel()
             self.model.setRootPath('')
             self.main_dialog.directory_tree_view.setModel(self.model)
             self.main_dialog.directory_tree_view.setRootIndex(self.model.index(self.path))
         #Path Not Selected
         elif self.path == "":
+            self.main_dialog.browse_button.setStyleSheet("")
             pass
 
         #Path is Not Exist
@@ -232,7 +237,7 @@ class Main_Form_Event_Handle:
     
     def faceAlignCheckboxChecked(self):
         if self.main_dialog.face_align_checkBox.isChecked() == True:
-            QtWidgets.QMessageBox.information(self.main_dialog, 'Information', "Face Align option is recommends at detect faces.", QtWidgets.QMessageBox.Ok)
+            QtWidgets.QMessageBox.information(self.main_dialog, 'Information', "Face Align option is recommended at detecting faces.", QtWidgets.QMessageBox.Ok)
     
     def directoryViewClick(self, index):
         path = self.main_dialog.sender().model().filePath(index)
@@ -258,8 +263,10 @@ class Main_Form_Event_Handle:
             self.wh = resize_output.getOutput()
 
     def detectionFileCheck(self, detection_object):
+        
         self.main_dialog.custom_detection_file.setText("Select Detection File")
         self.main_dialog.custom_detection_file.setStyleSheet("")
+
         if detection_object == "real":
             self.detection_file = ".\detection-files\haarcascade_frontalface_default.xml"
         elif detection_object == "anime":
@@ -276,13 +283,16 @@ class Main_Form_Event_Handle:
 
         self.main_dialog.detection_select_group.setExclusive(True)
 
-        fname = QtWidgets.QFileDialog.getOpenFileName(self.main_dialog, 'Open file', "", "XML Files(*.xml);; All Files(*)")
+        fname = QtWidgets.QFileDialog.getOpenFileName(self.main_dialog, "Open file", "./detection-files", "XML Files(*.xml);; All Files(*)")
         
         if os.path.isfile(fname[0]):
             self.detection_file = fname[0]
             self.main_dialog.custom_detection_file.setText("Selected")
             self.main_dialog.custom_detection_file.setStyleSheet("background-color:#ffcece")
         elif fname[0] == "":
+            self.detection_file = ""
+            self.main_dialog.custom_detection_file.setText("Select Detection File")
+            self.main_dialog.custom_detection_file.setStyleSheet("")
             pass
         elif not os.path.isfile(fname[0]):
             self.errorMessageBox("Error", "Please select other detection file")
@@ -291,6 +301,7 @@ class Main_Form_Event_Handle:
     def run(self):
         self.options = {
                         'input_path':self.path,
+                        'output_path':self.output_path,
                         'face_alignment':self.main_dialog.face_align_checkBox.isChecked(), 
                         'resize_output':self.main_dialog.resize_checkBox.isChecked(), 
                         'resize_width':self.wh[0],
@@ -298,15 +309,37 @@ class Main_Form_Event_Handle:
                         'detection_file':self.detection_file
                         }
         #print(self.options)
-        if self.checkOptions(self.options) == False:
+        if not self.checkOptions(self.options):
             self.main_dialog.progress_bar.setProperty("value", 0)
+            self.main_dialog.run_button.setStyleSheet("background-color:#c4ffb2")
+            self.main_dialog.run_button.setText("Processing...")
             run = CASF.CASF_Main(self.options, self.main_dialog)
-    
+            self.main_dialog.run_button.setStyleSheet("")
+            self.main_dialog.run_button.setText("Run")
+
+    def getOutputPath(self):
+        self.output_path = str(QtWidgets.QFileDialog.getExistingDirectory(self.main_dialog, "Select Directory", self.output_path))
+        if os.path.exists(self.output_path) == True:
+            self.main_dialog.output_path_select.setText("Selected")
+            self.main_dialog.output_path_select.setStyleSheet("background-color:#ffcece")
+        #Path Not Selected
+        elif self.output_path == "":
+            self.main_dialog.output_path_select.setText("Select Output Path")
+            self.main_dialog.output_path_select.setStyleSheet("")
+            pass
+        #Path is Not Exist
+        elif os.path.exists(self.output_path) == False:
+            self.errorMessageBox("Directory Load Error", "Please select other directory")
+
     def checkOptions(self, options):
         err = False
         # Exception Handling
         if self.options['input_path'] == "":
             self.errorMessageBox("Error", "Please select your input directory path")
+            err = True
+
+        elif self.options['output_path'] == "":
+            self.errorMessageBox("Error", "Please select your output directory path")
             err = True
 
         elif self.options['detection_file'] == "":
@@ -328,10 +361,9 @@ if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
 
     dialog = QtWidgets.QMainWindow()
-    
+
     main_form_ui = Main_Form_Ui()
     main_form_ui.setupUi(dialog)
-
     # ===========Event Handle Codes=============== #
     event_handle = Main_Form_Event_Handle(main_form_ui)
     dialog.show()
