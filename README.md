@@ -51,15 +51,15 @@ Please note <a href="https://github.com/Jaesung-Jun/Cut-And-Save-Faces/blob/mast
 
 ### dlib install guide
 
-'''bash
+```bash
 # You can see dlib install guide at
 # https://www.learnopencv.com/install-dlib-on-windows/
-'''
+```
 
-## Execution
-'''bash
+### Execution
+```bash
 python CASF-Main.py
-'''
+```
 
 ## References
 + **XML & dat Files Reference**
