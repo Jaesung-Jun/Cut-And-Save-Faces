@@ -25,14 +25,14 @@ Written by Python. (uses Qt to develop its graphical interface)
 <div align="center">
 <img src="https://raw.githubusercontent.com/Jaesung-Jun/Cut-And-Save-Faces/master/imgs/gui.PNG" width=500>
 <h5> Input </h5>
-<img src="https://raw.githubusercontent.com/Jaesung-Jun/Cut-And-Save-Faces/master/sample2/red_velvet.jpg" width=200 />
+<img src="https://raw.githubusercontent.com/Jaesung-Jun/Cut-And-Save-Faces/master/sample/red_velvet.jpg" width=200 />
 <br>
 <h5> Output </h5>
-<img src="https://raw.githubusercontent.com/Jaesung-Jun/Cut-And-Save-Faces/master/sample2/sample_outputs/red_velvet.jpg_0_cropped.jpg" width=80/>
-<img src="https://raw.githubusercontent.com/Jaesung-Jun/Cut-And-Save-Faces/master/sample2/sample_outputs/red_velvet.jpg_1_cropped.jpg" width=80/>
-<img src="https://raw.githubusercontent.com/Jaesung-Jun/Cut-And-Save-Faces/master/sample2/sample_outputs/red_velvet.jpg_2_cropped.jpg" width=80/>
-<img src="https://raw.githubusercontent.com/Jaesung-Jun/Cut-And-Save-Faces/master/sample2/sample_outputs/red_velvet.jpg_3_cropped.jpg" width=80/>
-<img src="https://raw.githubusercontent.com/Jaesung-Jun/Cut-And-Save-Faces/master/sample2/sample_outputs/red_velvet.jpg_4_cropped.jpg" width=80/>
+<img src="https://raw.githubusercontent.com/Jaesung-Jun/Cut-And-Save-Faces/master/sample/sample_outputs/red_velvet.jpg_0_cropped.jpg" width=80/>
+<img src="https://raw.githubusercontent.com/Jaesung-Jun/Cut-And-Save-Faces/master/sample/sample_outputs/red_velvet.jpg_1_cropped.jpg" width=80/>
+<img src="https://raw.githubusercontent.com/Jaesung-Jun/Cut-And-Save-Faces/master/sample/sample_outputs/red_velvet.jpg_2_cropped.jpg" width=80/>
+<img src="https://raw.githubusercontent.com/Jaesung-Jun/Cut-And-Save-Faces/master/sample/sample_outputs/red_velvet.jpg_3_cropped.jpg" width=80/>
+<img src="https://raw.githubusercontent.com/Jaesung-Jun/Cut-And-Save-Faces/master/sample/sample_outputs/red_velvet.jpg_4_cropped.jpg" width=80/>
 </div>
 
 ## Features
