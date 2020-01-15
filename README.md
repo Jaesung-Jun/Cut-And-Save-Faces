@@ -60,7 +60,7 @@ Written by Python. (uses Qt to develop its graphical interface)
 # opencv-python, opencv-contrib-python, dlib, imutils, PyQt5
 # Please note dlib install guide
 #
-# Developed Environments
+# Develop Environment
 #
 #  ●  opencv-python==4.1.0.25
 #  ●  opencv-contrib-python==4.1.0.25
