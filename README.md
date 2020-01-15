@@ -3,7 +3,7 @@
 </h1>
 
 <h4 align="center">
-Face pic collecting tool
+picture collecting tool
 </h4>
 
 <div align="center">
