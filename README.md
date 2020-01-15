@@ -7,7 +7,7 @@ Face pic collecting tool
 </h4>
 
 <div align="center">
-  <a href="https://github.com/Jaesung-Jun/Cut-And-Save-Faces/releases"><img src="https://img.shields.io/badge/released-1.2--CUI-blue"></a>
+  <a href="https://github.com/Jaesung-Jun/Cut-And-Save-Faces/releases"><img src="https://img.shields.io/badge/release-1.3--GUI-blue"></a>
   <br>
   <a href="https://pypi.org/project/PyQt5/"><img src="https://img.shields.io/badge/PyQt5-5.13.0-green"></a>
   <a href="https://pypi.org/project/opencv-python/"><img src="https://img.shields.io/badge/opencv--python-4.1.0.25-green"></a>
@@ -15,7 +15,6 @@ Face pic collecting tool
   <a href="https://pypi.org/project/dlib/"><img src="https://img.shields.io/badge/dlib-19.17.0-green"></a>
   <a href="https://pypi.org/project/imutils/"><img src="https://img.shields.io/badge/imutils-0.5.2-green"></a>
   <br>
-  <a><img src="https://img.shields.io/badge/GUI-Developing-yellowgreen"></a>
   <a href="https://raw.githubusercontent.com/Jaesung-Jun/Cut-And-Save-Faces/master/LICENSE"><img src="https://img.shields.io/badge/licence-MIT-lightgrey"></a>
 </div>
 
