@@ -54,7 +54,7 @@ Written by Python. (uses Qt to develop its graphical interface)
 # You can see dlib install guide at
 # https://www.learnopencv.com/install-dlib-on-windows/
 ```
-### Require libraries install
+### Install require libraries
 ```bash
 # opencv-python, opencv-contrib-python, dlib, imutils, PyQt5
 # Please note dlib install guide
