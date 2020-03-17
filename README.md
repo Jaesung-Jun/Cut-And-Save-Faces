@@ -67,7 +67,7 @@ Written by Python. (uses Qt to develop its graphical interface)
 #  ●  imutils==0.5.3
 #  ●  PyQt5==5.14.1
 #
-# Probably, CASF can be executed with higher versions of libraries.
+# Probably, CASF can be executed with higher versions of these libraries.
 #
 $ pip install opencv-python
 $ pip install opencv-contrib-python
@@ -91,7 +91,7 @@ $ python CASF-Main.py
 * **(1)** : Select your input path (dataset's path that you want to save&cut )
 * **(2)** : Select path where you want to save
 * **(3)** : Select output data type you want to save (or select your own detection file)
-* **[Option] (3-2)** : select Options
+* **[Option] (3-2)** : Select Options
 * **(4)** Run
 
 ## References
