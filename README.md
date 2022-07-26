@@ -4,6 +4,7 @@
 
 <h4 align="center">
 picture collecting tool
+
 </h4>
 
 <div align="center">
@@ -19,8 +20,12 @@ picture collecting tool
 </div>
 
 ## Description
+### Please use this project for legitimate purposes. The Owner of the project shall not be held liable for any improper use of the project.
+
 Cut And Save Faces is pictures collecting tool.<br>
 Written by Python. (uses Qt to develop its graphical interface)
+
+
 <div align="center">
 <img src="https://raw.githubusercontent.com/Jaesung-Jun/Cut-And-Save-Faces/master/imgs/gui.png" width=500/>
 <h5> Input </h5>
